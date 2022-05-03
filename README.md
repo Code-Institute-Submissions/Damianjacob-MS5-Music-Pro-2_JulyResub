@@ -32,12 +32,24 @@ My own goals for this project are:
 ## User Stories
 
 ### Epic 1: 
-1. As a user I want to see the most important information on the main site so that I know what services it offers.
+1. As a first time user I want to see the most important information on the main site so that I know what services it offers.
 2. As a user I want to browse through different products so that I can decide which one to buy.
 3. As a user I want to be able to order the products by different criteria so that I can find the one I'm looking for.
-4. As a use I want to be able to search for keywords so that I can find any product related to that keyword.
+4. As a user I want to be able to search for keywords so that I can find any product related to that keyword.
 5. As a user I want to see more information about a product when I click on it so that I can know more.
-6. As a User I want to be able to sign up so that I can get access to functions restricted to registered users.
+6. As a user I want to be able to buy a product without registering to the site.
+7. As a customer, I want to receive confirmation that my payment has gone through, or an error message if it hasn't.
+8. As a user I want to be redirected to a sign in page if I click on any links or buttons that require me to be logged in.
+9. As a use I want to receive feedback on my actions so that I know whether they have been executed correctly.
+10. As a User I want to be able to sign up so that I can get access to functions restricted to registered users.
+11. As a registered user, I want to save my delivery information so that the delivery form gets filled automatically.
+12. As a registered user, I want to be able to see all the orders I did in the past.
+13. As a registered user I want to be able to change my default delivery information.
+14. As a registered user, I want to be able to rate a product I have bought to express how happy I was with it.
+15. As a registered user, I want to be able to ask questions about a product.
+16. As the site owner, I want to be able to create, delete and update products.
+17. As the site owner, I want to be able to answer questions and comments from my customers.
+18. As the site owner, I want to have access to an admin panel, so that I can delete inappropriate comments and users.
 
 
 
