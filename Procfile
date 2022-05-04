@@ -1,1 +1,1 @@
-web: gunicorn ms5-music-pro.wsgi
+web: gunicorn musicpro.wsgi
