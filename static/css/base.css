@@ -1,0 +1,13 @@
+:root{
+    --custom-black: #0C0809;
+    --custom-red: #C42021;
+    --custom-yellow: #F3FFB9;
+}
+
+h1 {
+    color: #C42021;
+}
+
+html {
+    background-color: #F3FFB9;
+}
