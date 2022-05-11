@@ -8,6 +8,31 @@ h1 {
     color: #C42021;
 }
 
-html {
-    background-color: #F3FFB9;
+
+/* Custom classes */
+.bg-custom-black {
+    background-color: var(--custom-black);
+}
+
+.bg-custom-red {
+    background-color: var(--custom-red);
+}
+
+.bg-custom-yellow {
+    background-color: var(--custom-yellow);
+}
+
+#hero-image-container {
+    background: url('/media/guitaronfire-medium.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    height: calc(100vh - 92px);
+}
+
+#shop-now-btn {
+    color: white;
+    background-color: var(--custom-red);
+    border: 1px solid white;
 }

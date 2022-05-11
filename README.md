@@ -243,6 +243,9 @@ Fix: In settings.py I deleted the STATICFILES_STORAGE variable (which I had set 
 - My first deployment caused the Heroku app to crash. This was because in the Procfile I had used the Heroku app name instead of the Django project name.
 Fix: Changed "[heroku-appname].wsgi" to "[django-projectname].wsgi"
 
+- After adding custom CSS to my project and pushing the changes to Heroku, I'd get a "Server Error 500".
+Fix: Added DEVELOPMENT to config vars in Heroku and set it to "False".
+
 ## Deployment
 
 ### Creating the Github repository and cloning it
