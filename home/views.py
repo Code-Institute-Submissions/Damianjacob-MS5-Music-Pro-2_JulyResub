@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
 def index(request):
-    """Returns the index page"""
+    """Returns the products page"""
 
     return render(request, 'home/index.html')

@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'storages', #used for AWS S3
     'home',
+    'products',
 ]
 
 MIDDLEWARE = [
@@ -142,8 +143,8 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_ACCESS_KEY_ID')
+# AWS_STORAGE_BUCKET_NAME = os.environ.get('S3_BUCKET_NAME')
 S3_BUCKET_NAME = os.environ.get('S3_BUCKET_NAME')
-
 AWS_S3_FILE_OVERWRITE = False  
 
 AWS_DEFAULT_ACL = None  
