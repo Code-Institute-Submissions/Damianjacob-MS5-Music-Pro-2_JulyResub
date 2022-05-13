@@ -246,6 +246,9 @@ Fix: Changed "[heroku-appname].wsgi" to "[django-projectname].wsgi"
 - After adding custom CSS to my project and pushing the changes to Heroku, I'd get a "Server Error 500".
 Fix: 
 
+- When trying to log into my admin page, I got a "Forbidden" error where it demanded a CSRF token (which should already be taken care of).
+Fix: clear cookies from browser. https://stackoverflow.com/questions/29573163/django-admin-login-suddenly-demanding-csrf-token
+
 ## Deployment
 
 ### Creating the Github repository and cloning it
