@@ -244,7 +244,7 @@ Fix: In settings.py I deleted the STATICFILES_STORAGE variable (which I had set 
 Fix: Changed "[heroku-appname].wsgi" to "[django-projectname].wsgi"
 
 - After adding custom CSS to my project and pushing the changes to Heroku, I'd get a "Server Error 500".
-Fix: Added DEVELOPMENT to config vars in Heroku and set it to "False".
+Fix: 
 
 ## Deployment
 
