@@ -209,6 +209,7 @@ Apart from the programming languages, I have used the following:
 - [Font Awesome](https://fontawesome.com/) - All icons are from Font Awesome
 - [Google Fonts](https://fonts.google.com/) - I used the Roboto and Open Sans fonts from Google Fonts
 - [VSCode](https://code.visualstudio.com/) - The code editor where I wrote all my code.
+- [Mockaroo](https://mockaroo.com/) - for creating fixtures to test my database
 
 ## Testing
 

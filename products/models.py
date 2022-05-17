@@ -22,6 +22,9 @@ class Product(models.Model):
     description = models.TextField()
     category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
     image = models.ImageField(null=True, blank=True)
+    image_url = models.URLField(max_length=1024, null=True, blank=True, default=None)
+    price = models.DecimalField(max_digits=7, decimal_places=2, default=0)
+    rating = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)
 
     def __str__(self):
         return self.name

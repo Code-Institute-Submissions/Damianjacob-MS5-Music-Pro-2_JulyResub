@@ -1,0 +1,42 @@
+[
+    {
+        "model": "products.category",
+        "pk": 1,
+        "fields": {
+            "name": "percussion_instruments",
+            "friendly_name": "percussion"
+        }
+    },
+    {
+        "model": "products.category",
+        "pk": 2,
+        "fields": {
+            "name": "string_instruments",
+            "friendly_name": "strings"
+        }
+    },
+    {
+        "model": "products.category",
+        "pk": 3,
+        "fields": {
+            "name": "brass_instruments",
+            "friendly_name": "brass"
+        }
+    },
+    {
+        "model": "products.category",
+        "pk": 4,
+        "fields": {
+            "name": "keyboard_instruments",
+            "friendly_name": "keyboards"
+        }
+    },
+    {
+        "model": "products.category",
+        "pk": 5,
+        "fields": {
+            "name": "woodwind_instruments",
+            "friendly_name": "woodwind"
+        }
+    }
+]
