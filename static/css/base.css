@@ -22,6 +22,10 @@ h1 {
     background-color: var(--custom-yellow);
 }
 
+.text-orange-custom {
+    color: orange;
+}
+
 #hero-image-container {
     background: url('/media/guitaronfire-medium.jpg');
     background-size: cover;

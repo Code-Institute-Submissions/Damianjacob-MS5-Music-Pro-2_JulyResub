@@ -1,5 +1,5 @@
-from unicodedata import category
 from django.db import models
+import math
 
 class Category(models.Model):
 
@@ -25,6 +25,9 @@ class Product(models.Model):
     image_url = models.URLField(max_length=1024, null=True, blank=True, default=None)
     price = models.DecimalField(max_digits=7, decimal_places=2, default=0)
     rating = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)
+
+    def rounded_rating(self):
+        return math.floor(self.rating)
 
     def __str__(self):
         return self.name
