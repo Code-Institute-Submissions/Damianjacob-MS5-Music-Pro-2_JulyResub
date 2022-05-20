@@ -26,6 +26,18 @@ h1 {
     color: orange;
 }
 
+.text-yellow-custom{
+    color: var(--custom-yellow);
+}
+
+.text-red-custom{
+    color: var(--custom-red);
+}
+
+.text-black-custom{
+    color: var(--custom-black);
+}
+
 #hero-image-container {
     background: url('/media/guitaronfire-medium.jpg');
     background-size: cover;

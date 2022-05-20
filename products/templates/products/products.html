@@ -4,28 +4,66 @@
 <div class="container">
     <div class="row">
         {% for product in page_obj %}
-            <div class="col col-md-6 col-lg-4 col-xl-3 my-2 bg-light border border-dark rounded">
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 my-4 bg-light">
+                <div class="card h-100 bg-white">
+                    {% if product.image %}
+                        <a href="#">
+                            <img src="{{ MEDIA_URL }}{{ product.image }}" class="card-img-top" alt="{{ product.name }}">
+                        </a>
+                    {% else %}
+                        <a href="#">
+                            <img src="{{ MEDIA_URL }}noimage.jpg" class="card-img-top" alt="No image for this product">
+                        </a>
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ product.category.friendly_name }}</h6>
+                        <hr>
+                        <p class="card-text">
+                            {{ product.description|truncatechars:200 }}
+                            <hr>
+                            {% if product.rating %}
+                                <i class="fas fa-star{% if product.rating >= 1 %} text-orange-custom{% endif %}"></i>
+                                <i class="fas fa-star{% if product.rating >= 2 %} text-orange-custom{% endif %}"></i>
+                                <i class="fas fa-star{% if product.rating >= 3 %} text-orange-custom{% endif %}"></i>
+                                <i class="fas fa-star{% if product.rating >= 4 %} text-orange-custom{% endif %}"></i>
+                                <i class="fas fa-star{% if product.rating >= 5 %} text-orange-custom{% endif %}"></i>
+                                {{ product.rating }}/5
+                            {% else %}
+                                No rating yet
+                            {% endif %}
+                        </p>
+                        <p>{{ product.price }} €</p>
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+        <!-- {% for product in page_obj %}
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 my-2 bg-light border border-dark rounded">
                 {% if product.image %}
-                    <img src="{{ MEDIA_URL }}{{ product.image }}" class="img-fluid rounded mt-1" alt="">
+                    <a href="#">
+                        <img src="{{ MEDIA_URL }}{{ product.image }}" class="img-fluid rounded mt-1" alt="">
+                    </a>
                 {% else %}
                     <img src="{{ MEDIA_URL }}noimage.jpg" class="img-fluid rounded" alt="No image for this product">
                 {% endif %}
                 <p>{{ product.name }}</p>
                 <p>{{ product.price }} €</p>
-                <p>{{ product.category }}</p>
+                <p>{{ product.category.friendly_name }}</p>
                 {% if product.rating %}
                     <p>{{ product.rating }} 
-                        <i class="fas fa-star{% if product.rating >= 1 %} text-yellow-custom{% endif %}"></i>
-                        <i class="fas fa-star{% if product.rating >= 2 %} text-yellow-custom{% endif %}"></i>
-                        <i class="fas fa-star{% if product.rating >= 3 %} text-yellow-custom{% endif %}"></i>
-                        <i class="fas fa-star{% if product.rating >= 4 %} text-yellow-custom{% endif %}"></i>
-                        <i class="fas fa-star{% if product.rating >= 5 %} text-yellow-custom{% endif %}"></i>
+                        <i class="fas fa-star{% if product.rating >= 1 %} text-orange-custom{% endif %}"></i>
+                        <i class="fas fa-star{% if product.rating >= 2 %} text-orange-custom{% endif %}"></i>
+                        <i class="fas fa-star{% if product.rating >= 3 %} text-orange-custom{% endif %}"></i>
+                        <i class="fas fa-star{% if product.rating >= 4 %} text-orange-custom{% endif %}"></i>
+                        <i class="fas fa-star{% if product.rating >= 5 %} text-orange-custom{% endif %}"></i>
                     </p>
                 {% else %}
                     <p>No rating yet</p>
                 {% endif %}
             </div>
-        {% endfor %}
+        {% endfor %} -->
     </div>
 </div>
 
