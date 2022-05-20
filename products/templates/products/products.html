@@ -39,31 +39,6 @@
             </div>
 
         {% endfor %}
-        <!-- {% for product in page_obj %}
-            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 my-2 bg-light border border-dark rounded">
-                {% if product.image %}
-                    <a href="#">
-                        <img src="{{ MEDIA_URL }}{{ product.image }}" class="img-fluid rounded mt-1" alt="">
-                    </a>
-                {% else %}
-                    <img src="{{ MEDIA_URL }}noimage.jpg" class="img-fluid rounded" alt="No image for this product">
-                {% endif %}
-                <p>{{ product.name }}</p>
-                <p>{{ product.price }} €</p>
-                <p>{{ product.category.friendly_name }}</p>
-                {% if product.rating %}
-                    <p>{{ product.rating }} 
-                        <i class="fas fa-star{% if product.rating >= 1 %} text-orange-custom{% endif %}"></i>
-                        <i class="fas fa-star{% if product.rating >= 2 %} text-orange-custom{% endif %}"></i>
-                        <i class="fas fa-star{% if product.rating >= 3 %} text-orange-custom{% endif %}"></i>
-                        <i class="fas fa-star{% if product.rating >= 4 %} text-orange-custom{% endif %}"></i>
-                        <i class="fas fa-star{% if product.rating >= 5 %} text-orange-custom{% endif %}"></i>
-                    </p>
-                {% else %}
-                    <p>No rating yet</p>
-                {% endif %}
-            </div>
-        {% endfor %} -->
     </div>
 </div>
 
