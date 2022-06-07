@@ -1,59 +1,56 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container">
-    <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 my-4 bg-light">
-                <div class="card h-100 bg-white">
-                    {% if product.image %}
-                        <a href="#">
-                            <img src="{{ MEDIA_URL }}{{ product.image }}" class="card-img-top" alt="{{ product.name }}">
-                        </a>
-                    {% else %}
-                        <a href="#">
-                            <img src="{{ MEDIA_URL }}noimage.jpg" class="card-img-top" alt="No image for this product">
-                        </a>
-                    {% endif %}
-                    <div class="card-body">
-                        <h5 class="card-title">{{ product.name }}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">{{ product.category.friendly_name }}</h6>
-                        <hr>
-                        <p class="card-text">
-                            {{ product.description|truncatechars:200 }}
-                            <hr>
-                            {% if product.rating %}
-                                <i class="fas fa-star{% if product.rating >= 1 %} text-orange-custom{% endif %}"></i>
-                                <i class="fas fa-star{% if product.rating >= 2 %} text-orange-custom{% endif %}"></i>
-                                <i class="fas fa-star{% if product.rating >= 3 %} text-orange-custom{% endif %}"></i>
-                                <i class="fas fa-star{% if product.rating >= 4 %} text-orange-custom{% endif %}"></i>
-                                <i class="fas fa-star{% if product.rating >= 5 %} text-orange-custom{% endif %}"></i>
-                                {{ product.rating }}/5
-                            {% else %}
-                                No rating yet
-                            {% endif %}
-                        </p>
-                        <p>{{ product.price }} €</p>
-                    </div>
-                </div>
+<!-- Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{ product.name|title }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
             </div>
+            <div class="modal-body">
+                {% if product.image %}
+                    <img src="{{ MEDIA_URL }}{{ product.image }}" class="card-img-top" alt="{{ product.name }}">
+                {% endif %}
+            </div>
+        </div>
     </div>
 </div>
 
-<div class="pagination mt-2 mb-4 h4 d-flex justify-content-center text-dark">
-    <span class="step-links">
-        {% if page_obj.has_previous %}
-            <a href="?page=1">&laquo; first</a>
-            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-        {% endif %}
-
-        <span class="current">
-            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-        </span>
-
-        {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">next</a>
-            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-        {% endif %}
-    </span>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-4 col-lg-4 my-4 bg-light">
+            <div class="card h-100 bg-white">
+                {% if product.image %}
+                    <img src="{{ MEDIA_URL }}{{ product.image }}" class="card-img-top d-sm-none d-md-flex" alt="{{ product.name }}" data-bs-toggle="modal" data-bs-target="#imageModal">
+                    <img src="{{ MEDIA_URL }}{{ product.image }}" class="card-img-top d-sm-flex d-md-none" alt="{{ product.name }}">
+                {% else %}
+                    <img src="{{ MEDIA_URL }}noimage.jpg" class="card-img-top" alt="No image for this product">
+                {% endif %}
+                <div class="card-body">
+                    {% if product.rating %}
+                        <i class="fas fa-star{% if product.rating >= 1 %} text-orange-custom{% endif %}"></i>
+                        <i class="fas fa-star{% if product.rating >= 2 %} text-orange-custom{% endif %}"></i>
+                        <i class="fas fa-star{% if product.rating >= 3 %} text-orange-custom{% endif %}"></i>
+                        <i class="fas fa-star{% if product.rating >= 4 %} text-orange-custom{% endif %}"></i>
+                        <i class="fas fa-star{% if product.rating >= 5 %} text-orange-custom{% endif %}"></i>
+                        {{ product.rating }}/5
+                    {% else %}
+                        No rating yet
+                    {% endif %}
+                    <p>{{ product.price }} €</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-8 my-4 border text-center">
+            <h5 class="card-title">{{ product.name|title }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ product.category.friendly_name }}</h6>
+            <hr>
+            <p class="card-text">
+                {{ product.description }}
+            </p>
+        </div>
+    </div>
 </div>
 {% endblock %}
