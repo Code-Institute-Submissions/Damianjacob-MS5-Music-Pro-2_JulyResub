@@ -95,9 +95,9 @@
             </div>
         </div>
     </nav>
-    <form method="GET" action="" class="d-flex mx-2">
+    <form method="GET" action="{% url 'products' %}" class="d-flex mx-2">
         <input class="form-control me-2" type="text" name="q" placeholder="Search" aria-label="Search our products">
-        <button class="btn btn-outline-success" type="submit">Search <i class="fas fa-search"></i></button>
+        <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
     </form>
 
     {% if messages %}
