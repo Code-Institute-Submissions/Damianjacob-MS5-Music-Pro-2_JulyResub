@@ -76,8 +76,12 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" href="{% url 'products' %}">All products</a></li>
-                            <li><a class="dropdown-item" href="#">Instruments</a></li>
-                            <li><a class="dropdown-item" href="#">Accessories</a></li>
+                            <li><a class="dropdown-item" href="{% url 'products' %}?category=accessories">Accessories</a></li>
+                            <li><a class="dropdown-item" href="{% url 'products' %}?category=percussion_instruments">Percussion</a></li>
+                            <li><a class="dropdown-item" href="{% url 'products' %}?category=keyboard_instruments">Keyboards</a></li>
+                            <li><a class="dropdown-item" href="{% url 'products' %}?category=brass_instruments">Brass</a></li>
+                            <li><a class="dropdown-item" href="{% url 'products' %}?category=string_instruments">Strings</a></li>
+                            <li><a class="dropdown-item" href="{% url 'products' %}?category=woodwind_instruments">Woodwind</a></li>
                         </ul>
                     </li>
                     <a class="nav-link {% if grand_total %}font-weight-bold{% endif %}" href="#">

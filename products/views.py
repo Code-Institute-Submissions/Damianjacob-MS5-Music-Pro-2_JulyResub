@@ -10,8 +10,14 @@ def products(request):
 
     products = Product.objects.all()
     query = None
+    category = None
 
     if request.GET:
+        if 'category' in request.GET:
+            products = products.filter(category__name__iexact=request.GET['category'])
+            category = get_object_or_404(Category, name=request.GET['category'])
+
+
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
@@ -31,6 +37,7 @@ def products(request):
     context = {
         'page_obj': page_obj,
         'search_term': query,
+        'current_category': category,
     }
     return render(request, 'products/products.html', context)
 

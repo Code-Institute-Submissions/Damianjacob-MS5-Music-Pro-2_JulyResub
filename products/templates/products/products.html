@@ -37,25 +37,35 @@
                     </div>
                 </div>
             </div>
+        {% empty %}
+            <div class="col-12 my-3">
+                {% if search_term %}
+                    <h3 class="text-center">Sorry, there are no matches for "{{ search_term }}"</h3>
+                {% elif current_category %}
+                    <h3 class="text-center">Sorry, there are no products in the category "{{ current_category }}" right now</h3>
+                {% endif %}
+            </div>
         {% endfor %}
     </div>
 </div>
 
-<div class="pagination mt-2 mb-4 h4 d-flex justify-content-center text-dark">
-    <span class="step-links">
-        {% if page_obj.has_previous %}
-            <a href="?page=1">&laquo; first</a>
-            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-        {% endif %}
+{% if page_obj %}
+    <div class="pagination mt-2 mb-4 h4 d-flex justify-content-center text-dark">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
 
-        <span class="current">
-            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
         </span>
-
-        {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">next</a>
-            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-        {% endif %}
-    </span>
-</div>
+    </div>
+{% endif %}
 {% endblock %}
