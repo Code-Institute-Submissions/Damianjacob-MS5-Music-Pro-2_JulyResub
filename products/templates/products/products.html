@@ -3,48 +3,71 @@
 {% block content %}
 <div class="container">
     <div class="row">
+        <div class="col-12 mt-3">
+            <h3 class="text-center">
+                {% if search_term %}
+                    Matches for "{{ search_term }}"
+                {% elif current_category %}
+                    Category: {{ current_category.friendly_name|title }}
+                {% else %}
+                    All Products
+                {% endif %}
+            </h3>
+            <div class="dropdown text-center">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Sort by:{% if current_sorting %} {{ current_sorting }} {% endif %}
+                </a>
+
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <li><a class="dropdown-item" href="{% url 'products' %}?sort=price_lth">Price - Low to High</a></li>
+                    <li><a class="dropdown-item" href="{% url 'products' %}?sort=price_htl">Price - High to Low</a></li>
+                    <li><a class="dropdown-item" href="{% url 'products' %}?sort=avg_customer_rating">Average Customer Rating</a></li>
+                </ul>
+            </div>
+        </div>
         {% for product in page_obj %}
-            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 my-4 bg-light">
-                <div class="card h-100 bg-white">
-                    {% if product.image %}
-                        <a href="{% url 'product_detail' product.id %}">
-                            <img src="{{ MEDIA_URL }}{{ product.image }}" class="card-img-top" alt="{{ product.name }}">
-                        </a>
-                    {% else %}
-                        <a href="{% url 'product_detail' product.id %}">
-                            <img src="{{ MEDIA_URL }}noimage.jpg" class="card-img-top" alt="No image for this product">
-                        </a>
-                    {% endif %}
-                    <div class="card-body">
-                        <h5 class="card-title">{{ product.name }}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">{{ product.category.friendly_name }}</h6>
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 my-4 bg-light">
+            <div class="card h-100 bg-white">
+                {% if product.image %}
+                    <a href="{% url 'product_detail' product.id %}">
+                        <img src="{{ MEDIA_URL }}{{ product.image }}" class="card-img-top" alt="{{ product.name }}">
+                    </a>
+                {% else %}
+                    <a href="{% url 'product_detail' product.id %}">
+                        <img src="{{ MEDIA_URL }}noimage.jpg" class="card-img-top" alt="No image for this product">
+                    </a>
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name|title }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ product.category.friendly_name|title }}</h6>
+                    <hr>
+                    <p class="card-text">
+                        {{ product.description|truncatechars:200 }}
                         <hr>
-                        <p class="card-text">
-                            {{ product.description|truncatechars:200 }}
-                            <hr>
-                            {% if product.rating %}
-                                <i class="fas fa-star{% if product.rating >= 1 %} text-orange-custom{% endif %}"></i>
-                                <i class="fas fa-star{% if product.rating >= 2 %} text-orange-custom{% endif %}"></i>
-                                <i class="fas fa-star{% if product.rating >= 3 %} text-orange-custom{% endif %}"></i>
-                                <i class="fas fa-star{% if product.rating >= 4 %} text-orange-custom{% endif %}"></i>
-                                <i class="fas fa-star{% if product.rating >= 5 %} text-orange-custom{% endif %}"></i>
-                                {{ product.rating }}/5
-                            {% else %}
-                                No rating yet
-                            {% endif %}
-                        </p>
-                        <p>{{ product.price }} €</p>
-                    </div>
+                        {% if product.rating %}
+                            <i class="fas fa-star{% if product.rating >= 1 %} text-orange-custom{% endif %}"></i>
+                            <i class="fas fa-star{% if product.rating >= 2 %} text-orange-custom{% endif %}"></i>
+                            <i class="fas fa-star{% if product.rating >= 3 %} text-orange-custom{% endif %}"></i>
+                            <i class="fas fa-star{% if product.rating >= 4 %} text-orange-custom{% endif %}"></i>
+                            <i class="fas fa-star{% if product.rating >= 5 %} text-orange-custom{% endif %}"></i>
+                            {{ product.rating }}/5
+                        {% else %}
+                            No rating yet
+                        {% endif %}
+                    </p>
+                    <p>{{ product.price }} €</p>
                 </div>
             </div>
+        </div>
         {% empty %}
-            <div class="col-12 my-3">
-                {% if search_term %}
-                    <h3 class="text-center">Sorry, there are no matches for "{{ search_term }}"</h3>
-                {% elif current_category %}
-                    <h3 class="text-center">Sorry, there are no products in the category "{{ current_category }}" right now</h3>
-                {% endif %}
-            </div>
+        <div class="col-12 my-3">
+            {% if search_term %}
+                <h3 class="text-center">Sorry, there are no matches for "{{ search_term }}"</h3>
+            {% elif current_category %}
+                <h3 class="text-center">Sorry, there are no products in the category "{{ current_category }}" right now</h3>
+            {% endif %}
+        </div>
         {% endfor %}
     </div>
 </div>
