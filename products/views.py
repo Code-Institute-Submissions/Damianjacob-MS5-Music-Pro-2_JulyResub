@@ -17,7 +17,6 @@ def products(request):
     if request.GET:
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
-            print(f'sort: {sortkey}')
             sort = sortkey
             if sortkey == 'price_lth':
                 sortkey = 'price'
@@ -30,11 +29,9 @@ def products(request):
                 sort = 'Average Customer Rating'
             products = products.order_by(sortkey)
 
-
         if 'category' in request.GET:
             products = products.filter(category__name__iexact=request.GET['category'])
             category = get_object_or_404(Category, name=request.GET['category'])
-
 
         if 'q' in request.GET:
             query = request.GET['q']

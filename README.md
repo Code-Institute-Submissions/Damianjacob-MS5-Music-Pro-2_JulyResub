@@ -285,3 +285,6 @@ Tutorial followed to use AWS for file storage: https://www.section.io/engineerin
 Documentation for using AWS' S3 service with the django-storage library : https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html
 
 YouTube tutorial on how to set up AWS S3 for file storage: https://www.youtube.com/watch?v=nzLMA9WZqMM
+
+Custom template tag for keeping querystrings when going to another page or to a different category
+https://simpleisbetterthancomplex.com/snippet/2016/08/22/dealing-with-querystring-parameters.html
