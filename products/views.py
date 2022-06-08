@@ -1,9 +1,8 @@
 from django.shortcuts import get_object_or_404, render, redirect, reverse
 from django.core.paginator import Paginator
 from django.contrib import messages
-from django.db.models import Q
+from django.db.models import Q, F
 from .models import Product, Category
-from django.db.models.functions import Lower
 
 
 def products(request):
@@ -24,10 +23,10 @@ def products(request):
             if sortkey == 'price_htl':
                 sortkey = '-price'
                 sort = 'Price - High to Low'
+                products = products.order_by(sortkey)
             if sortkey == 'avg_customer_rating':
-                sortkey = '-rating'
                 sort = 'Average Customer Rating'
-            products = products.order_by(sortkey)
+                products = products.order_by(F('rating').desc(nulls_last=True))
 
         if 'category' in request.GET:
             products = products.filter(category__name__iexact=request.GET['category'])
@@ -50,6 +49,7 @@ def products(request):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     context = {
+        'products': products,
         'page_obj': page_obj,
         'search_term': query,
         'current_category': category,

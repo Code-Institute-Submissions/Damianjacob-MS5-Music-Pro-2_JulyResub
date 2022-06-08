@@ -13,7 +13,7 @@
         <div class="col-12 mt-3">
             <h3 class="text-center">
                 {% if search_term %}
-                    Matches for "{{ search_term }}"
+                    Matches for "{{ search_term }}": {{ products|length }}
                 {% elif current_category %}
                     Category: {{ current_category.friendly_name|title }}
                 {% else %}
