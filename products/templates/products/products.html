@@ -11,29 +11,40 @@
 <div class="container">
     <div class="row">
         <div class="col-12 mt-3">
+            {% if request.GET.urlencode %}
+                <div class="">
+                    <a href="{% url 'products' %}">Products Home</a>
+                </div>
+            {% endif %}
+        </div>
+        <div class="col-12">
             <h3 class="text-center">
                 {% if search_term %}
                     Matches for "{{ search_term }}": {{ products|length }}
                 {% elif current_category %}
-                    Category: {{ current_category.friendly_name|title }}
+                    Category: {{ current_category.friendly_name|title }} <small>({{ products|length }})</small>
                 {% else %}
-                    All Products
+                    All Products <small>({{ products|length }})</small>
                 {% endif %}
             </h3>
+        </div>
+        <div class="col-12">
             <div class="dropdown text-center">
-                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    Sort by:{% if current_sorting %} {{ current_sorting }} {% endif %}
-                </a>
+                    {% if products|length > 0 %}
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Sort by:{% if current_sorting %} {{ current_sorting }} {% endif %}
+                        </a>
 
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    {% with qstring=request.GET.urlencode %}
-                        <li><a class="dropdown-item" href="{% relative_url 'sort' 'price_lth' qstring %}">Price - Low to High</a></li>
-                        <li><a class="dropdown-item" href="{% relative_url 'sort' 'price_htl' qstring %}">Price - High to Low</a></li>
-                        <li><a class="dropdown-item" href="{% relative_url 'sort' 'avg_customer_rating' qstring %}">Average Customer Rating</a></li>
-                        <li><a class="dropdown-item" href="{% relative_url 'sort' 'reset' qstring %}">Reset</a></li>
-                    {% endwith %}
-                </ul>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            {% with qstring=request.GET.urlencode %}
+                                <li><a class="dropdown-item" href="{% relative_url 'sort' 'price_lth' qstring %}">Price - Low to High</a></li>
+                                <li><a class="dropdown-item" href="{% relative_url 'sort' 'price_htl' qstring %}">Price - High to Low</a></li>
+                                <li><a class="dropdown-item" href="{% relative_url 'sort' 'avg_customer_rating' qstring %}">Average Customer Rating</a></li>
+                                <li><a class="dropdown-item" href="{% relative_url 'sort' 'reset' qstring %}">Reset</a></li>
+                            {% endwith %}
+                        </ul>
+                {% endif %}
             </div>
         </div>
         {% for product in page_obj %}
@@ -82,7 +93,7 @@
     </div>
 </div>
 <div class="btt-button shadow-sma rounded-0 border border-black">
-    <a class="btt-link d-flex h-100">
+    <a class="btt-link text-black-custom d-flex h-100">
         <i class="fas fa-arrow-up mx-auto my-auto"></i>
     </a>
 </div>

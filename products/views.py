@@ -23,10 +23,11 @@ def products(request):
             if sortkey == 'price_htl':
                 sortkey = '-price'
                 sort = 'Price - High to Low'
-                products = products.order_by(sortkey)
             if sortkey == 'avg_customer_rating':
                 sort = 'Average Customer Rating'
                 products = products.order_by(F('rating').desc(nulls_last=True))
+            else:
+                products = products.order_by(sortkey)
 
         if 'category' in request.GET:
             products = products.filter(category__name__iexact=request.GET['category'])
