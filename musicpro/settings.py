@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'storages', #used for AWS S3
     'home',
     'products',
+    'bag',
 ]
 
 MIDDLEWARE = [
