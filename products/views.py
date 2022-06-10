@@ -46,15 +46,17 @@ def products(request):
             )
             products = products.filter(queries)
 
-    paginator = Paginator(products, 36)
+    paginator = Paginator(products, 24)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
+    second_last_page = page_obj.paginator.num_pages - 1
     context = {
         'products': products,
         'page_obj': page_obj,
         'search_term': query,
         'current_category': category,
         'current_sorting': sort,
+        'second_last_page': second_last_page
     }
     return render(request, 'products/products.html', context)
 

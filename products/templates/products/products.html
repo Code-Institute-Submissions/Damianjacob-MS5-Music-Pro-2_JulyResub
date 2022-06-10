@@ -12,8 +12,8 @@
     <div class="row">
         <div class="col-12 mt-3">
             {% if request.GET.urlencode %}
-                <div class="">
-                    <a href="{% url 'products' %}">Products Home</a>
+                <div>
+                    <a href="{% url 'products' %}" class="text-black-custom"><i class="fa-solid fa-arrow-left"></i> Products Home</a>
                 </div>
             {% endif %}
         </div>
@@ -61,7 +61,7 @@
                     {% endif %}
                     <div class="card-body">
                         <h5 class="card-title">{{ product.name|title }}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">{{ product.category.friendly_name|title }}</h6>
+                        <h6 class="card-subtitle mb-2"><a href="?category={{ product.category.name }}" class="text-muted">{{ product.category.friendly_name|title }}</a></h6>
                         <hr>
                         <p class="card-text">
                             {{ product.description|truncatechars:200 }}
@@ -92,27 +92,36 @@
         {% endfor %}
     </div>
 </div>
+<!-- Back to top button -->
 <div class="btt-button shadow-sma rounded-0 border border-black">
     <a class="btt-link text-black-custom d-flex h-100">
         <i class="fas fa-arrow-up mx-auto my-auto"></i>
     </a>
 </div>
-
+<!-- Pagination -->
 {% if page_obj %}
     <div class="pagination mt-2 mb-4 h4 d-flex justify-content-center text-dark">
         <span class="step-links">
             {% if page_obj.has_previous %}
-                <a href="{% relative_url 'page' 1 request.GET.urlencode %}">&laquo; first</a>
-                <a href="{% relative_url 'page' page_obj.previous_page_number request.GET.urlencode %}">previous</a>
+                <a href="{% relative_url 'page' 1 request.GET.urlencode %}" class="border p-1 rounded text-black-custom">&laquo; 1</a>
+                {% if page_obj.previous_page_number > 1 %}
+                    {% if page_obj.previous_page_number > 2 %}
+                        <span>...</span>
+                    {% endif %}
+                    <a href="{% relative_url 'page' page_obj.previous_page_number request.GET.urlencode %}" class="border p-1 rounded text-black-custom">{{ page_obj.previous_page_number }}</a>
+                {% endif %}
             {% endif %}
 
-            <span class="current">
-                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            <span class="current p-1 rounded border text-black-custom mr-2" id="current-page">
+                {{ page_obj.number }}
             </span>
 
             {% if page_obj.has_next %}
-                <a href="{% relative_url 'page' page_obj.next_page_number request.GET.urlencode %}">next</a>
-                <a href="{% relative_url 'page' page_obj.paginator.num_pages request.GET.urlencode %}">last &raquo;</a>
+                <a href="{% relative_url 'page' page_obj.next_page_number request.GET.urlencode %}" class="border p-1 rounded text-black-custom">{{ page_obj.next_page_number }}</a>
+                {% if page_obj.next_page_number < second_last_page %}
+                    <span>...</span>
+                    <a href="{% relative_url 'page' page_obj.paginator.num_pages request.GET.urlencode %}" class="border p-1 rounded text-black-custom">{{ page_obj.paginator.num_pages }} &raquo;</a>
+                {% endif %}
             {% endif %}
         </span>
     </div>

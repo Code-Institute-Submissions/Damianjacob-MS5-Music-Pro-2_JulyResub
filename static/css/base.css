@@ -64,3 +64,8 @@ h1 {
 .btt-link {
     cursor: pointer;
 }
+
+#current-page{
+    /* background-color: #bcc3cf; */
+    background-color: #d3d9e3;
+}
