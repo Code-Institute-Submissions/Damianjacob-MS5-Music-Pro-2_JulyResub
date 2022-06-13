@@ -56,7 +56,7 @@ INSTALLED_APPS = [
     'storages', #used for AWS S3
     'home',
     'products',
-    'bag',
+    'cart',
 ]
 
 MIDDLEWARE = [
@@ -83,7 +83,8 @@ TEMPLATES = [
                 'django.template.context_processors.request', #required by allauth
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.media'
+                'django.template.context_processors.media',
+                'cart.contexts.cart_contents',
             ],
         },
     },
@@ -177,6 +178,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
+
+FREE_DELIVERY_THRESHOLD = 50
+STANDARD_DELIVERY_PERCENTAGE = 10
 
 if 'USE_AWS' in os.environ:
     # Cache control

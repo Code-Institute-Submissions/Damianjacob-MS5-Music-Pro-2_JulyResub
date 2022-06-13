@@ -85,7 +85,7 @@
                             <li><a class="dropdown-item" href="{% url 'products' %}?category=woodwind_instruments">Woodwind</a></li>
                         </ul>
                     </li>
-                    <a class="nav-link {% if grand_total %}font-weight-bold{% endif %}" href="{% url 'view_bag' %}">
+                    <a class="nav-link {% if grand_total %}font-weight-bold{% endif %}" href="{% url 'view_cart' %}">
                         Shopping Cart <i class="fa-solid fa-cart-shopping"></i>
                         <p class="my-0 d-inline-block bg-custom-red rounded">
                             {% if grand_total %}
