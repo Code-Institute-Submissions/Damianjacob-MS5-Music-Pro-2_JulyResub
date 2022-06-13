@@ -4,6 +4,10 @@ register = template.Library()
 
 @register.simple_tag
 def relative_url(field_name, value, urlencode=None):
+    """
+    Returns the current query strings plus the new query string
+    wanted by the user
+    """
     url = f'?{field_name}={value}'
 
     if urlencode:
@@ -20,5 +24,4 @@ def relative_url(field_name, value, urlencode=None):
         if value == 'reset':
             url = f'?{encoded_querystring}'
 
-    print(f'relative url: {url}')
     return url

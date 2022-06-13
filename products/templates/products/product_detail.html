@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<!-- Modal -->
+<!-- Modal for product image-->
 <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
@@ -50,6 +50,22 @@
             <p class="card-text">
                 {{ product.description }}
             </p>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="col-12">
+                <strong class="mx-1">Quantity: </strong>
+                <input type="number" class="mx-1" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}">
+                <button type="submit" class="mx-1 btn btn-dark">Add to cart</button>
+            </div>
+        </form>
+        <div class="col-12 my-1">
+            <a href="{% if referrer_page %}{{ referrer_page }}{% else %}{% url 'products' %}{% endif %}" class="text-black-custom">
+                <i class="fa-solid fa-arrow-left"></i>
+                Keep Shopping
+            </a>
         </div>
     </div>
 </div>
