@@ -67,11 +67,12 @@ def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     referrer_page = ''
 
+
     if request.META['HTTP_REFERER']:
         referrer = request.META['HTTP_REFERER']
         split_url = referrer.split('/')
         print(f'split url: {split_url}')
-        if split_url[3] == 'products':
+        if split_url[3] == 'products' and referrer != request.path:
             referrer_page = referrer
 
     print(f'referrer page: {referrer_page}')
