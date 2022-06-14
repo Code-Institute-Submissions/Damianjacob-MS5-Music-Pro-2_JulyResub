@@ -23,3 +23,16 @@ def add_to_cart(request, item_id):
     request.session['cart'] = cart
     print(f'cart: {request.session["cart"]}')
     return redirect(redirect_url)
+
+
+def update_cart_item(request, item_id):
+    """Update an item that is already in the cart"""
+
+    new_quantity = int(request.POST.get('quantity'))
+    cart = request.session.get('cart', {})
+
+    cart[item_id] = new_quantity
+
+    request.session['cart'] = cart
+
+    return redirect('view_cart')
