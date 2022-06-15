@@ -67,18 +67,32 @@ def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     referrer_page = ''
 
-
     if request.META['HTTP_REFERER']:
         referrer = request.META['HTTP_REFERER']
         split_url = referrer.split('/')
         print(f'split url: {split_url}')
-        if split_url[3] == 'products' and referrer != request.path:
+        referrer_path = '/' + '/'.join(split_url[3: ])
+        if split_url[3] == 'products' and referrer_path != request.path:
             referrer_page = referrer
 
     print(f'referrer page: {referrer_page}')
+    print(f'referrer path: {referrer_path}')
+    print(f'current path: {request.get_full_path()}')
 
+    cart = request.session.get('cart', {})
+    is_in_cart = False
+    quantity_in_cart = 0
+
+    for item_id, quantity in cart.items():
+        if item_id == product_id:
+            is_in_cart = True
+            quantity_in_cart = quantity
+
+    print(f'cart: {cart}')
     context = {
         'product': product,
-        'referrer_page': referrer_page
+        'referrer_page': referrer_page,
+        'is_in_cart': is_in_cart,
+        'quantity_in_cart': quantity_in_cart,
     }
     return render(request, 'products/product_detail.html', context)

@@ -48,19 +48,19 @@
                                         <p class="my-0">{{ item.product.price }}</p>
                                     </td>
                                     <td class="py-3">
-                                        <!-- <p class="my-0">{{ item.quantity }}</p> -->
                                         <form action="{% url 'update_cart_item' item.product.id %}" method="POST" id="quantity-form">
                                             {% csrf_token %}
-                                            <!-- <input type="number" class="mx-1 quantity-input" name="quantity"
-                                            value="{{ item.quantity }}" min="1" max="10" data-item_id="{{ product.id }}"
-                                            id="id_qty_{{ item.product.id }}"> -->
-                                            <select name="quantity" id="{{ product.id }}" class="quantity-input">
+                                            <select name="quantity" class="quantity-input">
                                                 {% for x in availability %}
                                                     <option value="{{ forloop.counter }}" {% if forloop.counter == item.quantity %}selected{% endif %}>
                                                         {{ forloop.counter }}
                                                     </option>
                                                 {% endfor %}
                                             </select>
+                                        </form>
+                                        <form action="{% url 'remove_cart_item' item.product.id %}" method="POST">
+                                            {% csrf_token %}
+                                            <button type="submit" class="remove-btn mt-4 rounded">Remove</button>
                                         </form>
                                     </td>
                                     <td class="py-3">
@@ -102,7 +102,7 @@
 {{ block.super }}
 <script type="text/javascript">
     $('.quantity-input').change(function(){
-        $(this).parent().submit()
+        $(this).parent().submit();
     })
 </script>
 {% endblock %}

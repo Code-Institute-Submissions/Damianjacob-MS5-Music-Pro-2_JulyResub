@@ -1,4 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
+from products.models import Product
+from django.contrib import messages
 
 # Create your views here.
 
@@ -15,10 +17,7 @@ def add_to_cart(request, item_id):
     redirect_url = request.POST.get('redirect_url')
     cart = request.session.get('cart', {})
 
-    if item_id in list(cart.keys()):
-        cart[item_id] += quantity
-    else:
-        cart[item_id] = quantity
+    cart[item_id] = quantity
 
     request.session['cart'] = cart
     print(f'cart: {request.session["cart"]}')
@@ -34,5 +33,18 @@ def update_cart_item(request, item_id):
     cart[item_id] = new_quantity
 
     request.session['cart'] = cart
+
+    return redirect('view_cart')
+
+
+def remove_cart_item(request, item_id):
+    """Remove an item from the cart"""
+
+    product = get_object_or_404(Product, pk=item_id)
+    cart = request.session.get('cart')
+    del cart[item_id]
+    request.session['cart'] = cart
+
+    messages.info(request, f'{product.name} has been removed from your cart')
 
     return redirect('view_cart')
