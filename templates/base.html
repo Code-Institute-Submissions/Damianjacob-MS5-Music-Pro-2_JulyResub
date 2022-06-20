@@ -101,12 +101,14 @@
         </div>
     </nav>
     <form method="GET" action="{% url 'products' %}" class="d-flex mx-2">
-        <input class="form-control me-2" type="text" name="q" placeholder="Search" aria-label="Search our products">
+        <input class="form-control me-2" type="text" name="q" value="{% if search_term %}{{ search_term }}{% endif %}"
+            placeholder="Search"
+            aria-label="Search our products">
         <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
     </form>
 
     {% if messages %}
-        <div class="message-container">
+        <div class="message-container mt-2 mr-4">
             <ul class="messages">
                 {% for message in messages %}
                 <li {% if message.tags %}class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</li>

@@ -20,11 +20,17 @@
 
 <div class="container">
     <div class="row">
+        <div class="col-12 my-1">
+            <a href="{% if referrer_page %}{{ referrer_page }}{% else %}{% url 'products' %}{% endif %}" class="text-black-custom">
+                <i class="fa-solid fa-arrow-left"></i>
+                Keep Shopping
+            </a>
+        </div>
         <div class="col-sm-12 col-md-4 col-lg-4 my-4 bg-light">
             <div class="card h-100 bg-white">
                 {% if product.image %}
-                    <img src="{{ MEDIA_URL }}{{ product.image }}" class="card-img-top d-sm-none d-md-flex" alt="{{ product.name }}" data-bs-toggle="modal" data-bs-target="#imageModal">
-                    <img src="{{ MEDIA_URL }}{{ product.image }}" class="card-img-top d-sm-flex d-md-none" alt="{{ product.name }}">
+                    <img src="{{ MEDIA_URL }}{{ product.image }}" class="card-img-top d-none d-md-flex" alt="{{ product.name }}" data-bs-toggle="modal" data-bs-target="#imageModal">
+                    <img src="{{ MEDIA_URL }}{{ product.image }}" class="card-img-top d-flex d-md-none" alt="{{ product.name }}">
                 {% else %}
                     <img src="{{ MEDIA_URL }}noimage.jpg" class="card-img-top" alt="No image for this product">
                 {% endif %}
@@ -53,7 +59,7 @@
         </div>
     </div>
     <div class="row d-flex justify-content-center">
-        <form action="{% url 'add_to_cart' product.id %}" method="POST">
+        <form action="{% url 'add_to_cart' product.id %}" method="POST" class="mb-4">
             {% csrf_token %}
             <div class="col-12">
                 {% if is_in_cart %}
@@ -72,12 +78,6 @@
             </div>
             <input type="hidden" name="redirect_url" value="{{ request.path }}">
         </form>
-        <div class="col-12 my-1">
-            <a href="{% if referrer_page %}{{ referrer_page }}{% else %}{% url 'products' %}{% endif %}" class="text-black-custom">
-                <i class="fa-solid fa-arrow-left"></i>
-                Keep Shopping
-            </a>
-        </div>
     </div>
 </div>
 {% endblock %}

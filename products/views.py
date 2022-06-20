@@ -9,6 +9,7 @@ def products(request):
     """Returns the products page"""
 
     products = Product.objects.all()
+    categories = Category.objects.all()
     query = None
     category = None
     sort = None
@@ -52,6 +53,7 @@ def products(request):
     second_last_page = page_obj.paginator.num_pages - 1
     context = {
         'products': products,
+        'categories': categories,
         'page_obj': page_obj,
         'search_term': query,
         'current_category': category,

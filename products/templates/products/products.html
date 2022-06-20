@@ -11,39 +11,49 @@
 <div class="container">
     <div class="row">
         <div class="col-12 mt-3">
-            {% if request.GET.urlencode %}
+            {% if current_category or search_term %}
                 <div>
-                    <a href="{% url 'products' %}" class="text-black-custom"><i class="fa-solid fa-arrow-left"></i> Products Home</a>
+                    <a href="{% url 'products' %}" class="text-black-custom back-btn"><i class="fa-solid fa-arrow-left"></i> All Products</a>
                 </div>
             {% endif %}
         </div>
         <div class="col-12">
             <h3 class="text-center">
-                {% if search_term %}
-                    Matches for "{{ search_term }}": {{ products|length }}
-                {% elif current_category %}
-                    Category: {{ current_category.friendly_name|title }} <small>({{ products|length }})</small>
-                {% else %}
-                    All Products <small>({{ products|length }})</small>
-                {% endif %}
+                Products
             </h3>
         </div>
         <div class="col-12">
             <div class="dropdown text-center">
-                    {% if products|length > 0 %}
-                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Sort by:{% if current_sorting %} {{ current_sorting }} {% endif %}
-                        </a>
+                {% if products|length > 0 %}
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Category: {% if current_category %}{{ current_category.friendly_name|title }}{% else %}All{% endif %}
+                        <span>({{ products|length }})</span>
+                    </a>
 
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            {% with qstring=request.GET.urlencode %}
-                                <li><a class="dropdown-item" href="{% relative_url 'sort' 'price_lth' qstring %}">Price - Low to High</a></li>
-                                <li><a class="dropdown-item" href="{% relative_url 'sort' 'price_htl' qstring %}">Price - High to Low</a></li>
-                                <li><a class="dropdown-item" href="{% relative_url 'sort' 'avg_customer_rating' qstring %}">Average Customer Rating</a></li>
-                                <li><a class="dropdown-item" href="{% relative_url 'sort' 'reset' qstring %}">Reset</a></li>
-                            {% endwith %}
-                        </ul>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        {% with qstring=request.GET.urlencode %}
+                            {% for category in categories %}
+                                <li><a class="dropdown-item" href="{% relative_url 'category' category.name qstring %}">{{ category.friendly_name|title }}</a></li>
+                            {% endfor %}
+                            <li><a class="dropdown-item" href="{% url 'products' %}"><strong>All</strong></a></li>
+                        {% endwith %}
+                    </ul>
+
+                    
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Sort by:{% if current_sorting %} {{ current_sorting }} {% endif %}
+                    </a>
+
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        {% with qstring=request.GET.urlencode %}
+                            <li><a class="dropdown-item" href="{% relative_url 'sort' 'price_lth' qstring %}">Price - Low to High</a></li>
+                            <li><a class="dropdown-item" href="{% relative_url 'sort' 'price_htl' qstring %}">Price - High to Low</a></li>
+                            <li><a class="dropdown-item" href="{% relative_url 'sort' 'avg_customer_rating' qstring %}">Average Customer Rating</a></li>
+                            <li><a class="dropdown-item" href="{% relative_url 'sort' 'reset' qstring %}">Reset</a></li>
+                        {% endwith %}
+                    </ul>
                 {% endif %}
             </div>
         </div>
@@ -82,8 +92,12 @@
                 </div>
             </div>
         {% empty %}
+        <!-- When a category is empty or a search term has no match -->
             <div class="col-12 my-3">
-                {% if search_term %}
+                {% if search_term and current_category %}
+                    <h3 class="text-center">Sorry, there are no matches for "{{ search_term }}" in the category {{ current_category.friendly_name|title }}</h3>
+                    <a class="btn btn-black" href="{% url 'products' %}?q={{ search_term }}">Search for "{{ search_term }}"" in all categories</a>
+                {% elif search_term %}
                     <h3 class="text-center">Sorry, there are no matches for "{{ search_term }}"</h3>
                 {% elif current_category %}
                     <h3 class="text-center">Sorry, there are no products in the category "{{ current_category }}" right now</h3>

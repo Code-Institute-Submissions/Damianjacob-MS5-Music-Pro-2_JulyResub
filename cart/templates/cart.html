@@ -11,13 +11,13 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container mb-2">
+    <div class="container my-2">
         <div class="row">
             <div class="col">
-                <hr>
                 <h2 class="logo-font mb-4">
                     Shopping Cart
                 </h2>
+                <hr>
             </div>
         </div>
 
@@ -87,10 +87,13 @@
                             </tr>
                         </table>
                     </div>
+                    <a href="{% url 'products' %}" class="text-black-custom back-btn">
+                        <i class="fa-solid fa-arrow-left"></i> Keep Shopping
+                    </a>
                 {% else %}
                     <p class="lead mb-5">Your cart is empty</p>
                     <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 btn-lg">
-                        <i class="fas fa-chevron-left"></i> Products
+                        <i class="fa-solid fa-arrow-left"></i> Products
                     </a>
                 {% endif %}
             </div>
