@@ -109,7 +109,11 @@
 
     {% if messages %}
         <div class="message-container mt-2 mr-4">
-            {% include 'includes/toasts/toast_success.html' %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li {% if message.tags %}class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
         </div>
     {% endif %}
 
