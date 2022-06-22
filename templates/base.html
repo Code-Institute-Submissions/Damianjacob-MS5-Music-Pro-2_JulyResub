@@ -108,12 +108,15 @@
     </form>
 
     {% if messages %}
-        <div class="message-container mt-2 mr-4">
-            <ul class="messages">
+        <div class="message-container mt-2 mx-5 text-center">
                 {% for message in messages %}
-                <li {% if message.tags %}class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close alert-close-btn" data-bs-dismiss="alert" aria-label="Close">
+                        <i class="fa-solid fa-xmark fa-2xl"></i>
+                    </button>
+                  </div>
                 {% endfor %}
-            </ul>
         </div>
     {% endif %}
 

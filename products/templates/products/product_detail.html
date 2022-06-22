@@ -21,7 +21,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12 my-1">
-            <a href="{% if referrer_page %}{{ referrer_page }}{% else %}{% url 'products' %}{% endif %}" class="text-black-custom">
+            <a href="{% if referrer_page %}{{ referrer_page }}{% else %}{% url 'products' %}{% endif %}" class="text-black-custom back-btn">
                 <i class="fa-solid fa-arrow-left"></i>
                 Keep Shopping
             </a>
@@ -63,7 +63,10 @@
             {% csrf_token %}
             <div class="col-12">
                 {% if is_in_cart %}
-                    <span class="border rounded">This item is already in the cart</span>
+                    <p class="border rounded p-1 text-center">
+                        <i class="fa-solid fa-cart-arrow-down"></i>
+                        This item is already in your cart
+                    </p>
                 {% endif %}
                 <strong class="mx-1">Quantity: </strong>
                 <!-- <input type="number" class="mx-1" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}"> -->
