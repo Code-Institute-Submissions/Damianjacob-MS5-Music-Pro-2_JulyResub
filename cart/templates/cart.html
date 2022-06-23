@@ -24,6 +24,9 @@
         <div class="row">
             <div class="col">
                 {% if cart_items %}
+                    <a href="{% url 'products' %}" class="text-black-custom back-btn mb-3">
+                        <i class="fa-solid fa-arrow-left"></i> Keep Shopping
+                    </a>
                     <div class="table-responsive rounded">
                         <table class="table table-sm table-borderless">
                             <thead class="text-black">
@@ -87,9 +90,11 @@
                             </tr>
                         </table>
                     </div>
-                    <a href="{% url 'products' %}" class="text-black-custom back-btn">
-                        <i class="fa-solid fa-arrow-left"></i> Keep Shopping
-                    </a>
+                    <p class="text-center">
+                        <a href="{% url 'checkout' %}" class="btn btn-primary">
+                            <i class="fa-solid fa-credit-card"></i> Check Out
+                        </a>
+                    </p>
                 {% else %}
                     <p class="lead mb-5">Your cart is empty</p>
                     <a href="{% url 'products' %}" class="text-black-custom back-btn">

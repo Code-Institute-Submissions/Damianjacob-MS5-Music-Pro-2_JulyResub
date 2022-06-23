@@ -26,7 +26,7 @@
                 <p>To complete your purchase, fill out the form below</p>
                 <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                     {% csrf_token %}
-                    <fieldset class="rounded px-3 mb-5">
+                    <fieldset class="px-3 mb-5 rounded">
                         <legend class="fieldset-label small text-custom-black px-2 w-auto">Details</legend>
                         {{ order_form.full_name | as_crispy_field }}
                         {{ order_form.email | as_crispy_field }}
@@ -54,7 +54,7 @@
                     </fieldset>
                     <fieldset class="px-3 mb-5 rounded">
                         <legend class="fieldset-label small text-custom-black px-2 w-auto">Payment</legend>
-                        <div class="mb-3" id="card-element"></div>
+                        <div class="mb-3 p-1 rounded bg-white" id="card-element"></div>
                         <div class="mb-3 text-danger" id="card-errors" role='alert'></div>
                     </fieldset>
 
@@ -82,4 +82,11 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    {{ stripe_public_key | json_script:"id_stripe_public_key" }}
+    {{ client_secret | json_script:"id_client_secret" }}
+    <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock %}

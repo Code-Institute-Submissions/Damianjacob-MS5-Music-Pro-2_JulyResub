@@ -69,7 +69,6 @@
                     </p>
                 {% endif %}
                 <strong class="mx-1">Quantity: </strong>
-                <!-- <input type="number" class="mx-1" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}"> -->
                 <select name="quantity" class="quantity-input">
                     {% for x in availability %}
                         <option value="{{ forloop.counter }}" {% if forloop.counter == quantity_in_cart %}selected{% endif %}>
