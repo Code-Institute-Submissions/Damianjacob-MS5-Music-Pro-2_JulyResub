@@ -20,6 +20,14 @@
                 <hr>
             </div>
         </div>
+        <p>
+            <a href="{% url 'view_cart' %}" class="text-black-custom back-btn mr-3">
+                <span class="icon">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </span>
+                <span class="font-weight-bold">Back to Cart</span>
+            </a>
+        </p>
 
         <div class="row">
             <div class="col">
@@ -58,14 +66,8 @@
                         <div class="mb-3 text-danger" id="card-errors" role='alert'></div>
                     </fieldset>
 
-                    <div class="submit-button text-right mt-5 mb-2">                    
-						<a href="{% url 'view_cart' %}" class="text-black-custom back-btn">
-							<span class="icon">
-								<i class="fa-solid fa-arrow-left"></i>
-							</span>
-							<span class="font-weight-bold">Back to Cart</span>
-						</a>
-						<button id="submit-button" class="btn btn-black rounded-0">
+                    <div class="submit-button text-center mt-5 mb-2">                    
+						<button id="submit-button" class="btn btn-primary rounded ml-3">
 							<span class="font-weight-bold">Proceed to secure payment</span>
 							<span class="icon">
 								<i class="fas fa-lock"></i>
@@ -73,7 +75,7 @@
 						</button>
 						<p class="small text-danger my-0">
 							<span class="icon">
-								<i class="fas fa-exclamation-circle"></i>
+								<i class="fa-solid fa-money-bill-transfer"></i>
 							</span>
 							<span>You are about to pay: <strong>€{{ grand_total|floatformat:2 }}</strong></span>
 						</p>
