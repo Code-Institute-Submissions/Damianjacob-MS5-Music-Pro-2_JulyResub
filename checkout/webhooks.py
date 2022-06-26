@@ -9,7 +9,7 @@ import json
 
 @require_POST
 @csrf_exempt
-def my_webhook_view(request):
+def webhook(request):
     """Listens for webhooks from Stripe """
     wh_secret = settings.STRIPE_WH_SECRET
     stripe_api_key = settings.STRIPE_SECRET_KEY
