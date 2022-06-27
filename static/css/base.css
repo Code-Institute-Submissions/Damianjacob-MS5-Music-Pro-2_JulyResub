@@ -130,3 +130,9 @@ select:invalid,
 select option[value=""]{
     color: gray;
 }
+
+/* Profile */
+.order-history{
+    max-height: 442px;
+    overflow-y: auto;
+}

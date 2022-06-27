@@ -188,12 +188,21 @@
             </div>
         </div>
             <p class="mt-3">
-                <a href="{% url 'products' %}" class="text-black-custom back-btn mr-3">
-                    <span class="icon">
-                        <i class="fa-solid fa-arrow-left"></i>
-                    </span>
-                    <span class="font-weight-bold">Back to Shop</span>
-                </a>
+                {% if from_profile %}
+                    <a href="{% url 'profile' %}" class="text-black-custom back-btn mr-3">
+                        <span class="icon">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </span>
+                        <span class="font-weight-bold">Back to Profile</span>
+                    </a>
+                {% else %}
+                    <a href="{% url 'products' %}" class="text-black-custom back-btn mr-3">
+                        <span class="icon">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </span>
+                        <span class="font-weight-bold">Back to Shop</span>
+                    </a>
+                {% endif %}
             </p>
     
         </div>
