@@ -96,7 +96,6 @@ h1 {
 }
 
 /* checkout page */
-
 #payment-form .form-control,
 #card-element{
     color: var(--custom-black);
@@ -120,4 +119,14 @@ h1 {
     justify-content: center;
     margin: 0;
     height: 100%;
+}
+
+select,
+select option{
+    color: var(--custom-black);
+}
+
+select:invalid,
+select option[value=""]{
+    color: gray;
 }
