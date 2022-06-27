@@ -42,7 +42,7 @@ h1 {
     background: url('/media/guitaronfire-medium.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: right;
     background-attachment: fixed;
     height: calc(100vh - 92px);
 }
