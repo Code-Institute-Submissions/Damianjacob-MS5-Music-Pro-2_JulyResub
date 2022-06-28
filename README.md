@@ -13,21 +13,19 @@ See deployed site here:
 ## Project Goals
 The goals for this project are:
 
-<!-- - Creating a forum where users can talk and discuss about baking
-- Users can sign up and log in to take advantage of the main features
-- Users can create, update and delete their posts. They can also engage with posts of other users by liking them and commenting. -->
+Creating a site for a music shop, where users can browse and purchase the instruments they want.
 
 My own goals for this project are:
-<!-- - Creating a user-friendly and simple application
-- Improving my skills of web development, especially regarding frameworks(Django), back-end development and python. -->
+- Creating a user-friendly e-commerce site
+- Improving my skills of web development, especially regarding frameworks (Django), back-end development and python and integrating payment systems into my sites.
 
 ## User Goals
-<!-- - Find information or recipes about baking
-- Discuss bakery-related things with other users
-- Share recipes, pictures or advice with other users -->
+- Find music instruments to buy
+- Browse through instruments, find them based on keywords or categories
+- Compare instruments by price or user rating
 
 ## Site Owner Goals
-<!-- - Keep the site friendly and secure by having access to the admin panel, where it's possible to delete posts, comments and users should it be necessary. -->
+- Be able to manage the site by adding or deleting products.
 
 ## User Stories
 
@@ -53,26 +51,18 @@ My own goals for this project are:
 
 
 
-<!-- ### Epic 2: 
 4. As a user I want to get redirected to the sign in/sign up page if I click on any links or buttons that require me to be logged in so that I can sign in or sign up easily.
 5. As a user I want to get feedback from the site on the actions I have performed so that I can see whether my action was carried out correctly or not.
 6. As a user I want to be able to get back to the home page in one click so that I can navigate the site easily.
-### Epic 3: Authentication and permission
+
 7. As a user I want to sign up and log in so that I can perform actions reserved for registered users.
 8. As a registered user I want to be able to log out so that I have more security.
-9. As a registered user I want to be able to create posts so that I can share my recipes, tutorials or advice with other users.
-10. As a registered user I want to like posts so that I can express my preferences for certain posts.
-11. As a registered user I want to leave comments under posts so that I can discuss topics with other users.
-13. As a registered user I want to be able to edit my posts so that I can correct mistakes easily if they happen.
-14. As a registered user I want to be able to remove my posts so that I can delete them if I don't like them anymore.
+9. As a registered user I want to be able to access my past orders.
 ### Epic 4: Admin
-15. As a site admin I want to be able to access the admin page so that I can monitor posts and comments and remove them if they are inappropriate. -->
+15. As a site admin I want to be able to add or delete products from the store.
 
 ## Design Choices
-<!-- My goal was to create a simple site with a clean look. I have opted for two warm primary colors, to create a welcoming atmosphere. The brown and gold colors should remind of the colors of bread (crust and inside). -->
-
-### Color palette
-<!-- ![]() -->
+My goal was to create a simple site with a clean and friendly look.
 
 ### Wireframes
 I used balsamiq for the wireframes. The final wireframe is a bit different from the first version, as i made some changes while creating the project, in accordance with Agile principles.
@@ -94,7 +84,13 @@ I used balsamiq for the wireframes. The final wireframe is a bit different from 
 ## Structure
 ### Code directories
 Music Pro was created with the Django framework, so it is divided into apps:
-- breadit is the main app, where settings.py can be found
+- musicpro is the main app, where settings.py can be found
+Other apps include:
+- products
+- home
+- profiles
+- checkout
+- cart
 
 Other directories:
 - static: This is where the custom CSS and JavaScript files for this project are stored.
@@ -102,14 +98,16 @@ Other directories:
 - docs: in this directory I stored all the images and screenshots needed for this Readme file.
 
 ### Database
-<!-- This website relies heavily on a databse. I used postgreSQL as database both for development and for the deployed version. -->
+This website relies on a database for its function. I used postgreSQL as database both for development and for the deployed version.
 
 ### Data Models
-<!-- Data Models are a central part of this project. There are three data models I used:
+Data Models are a central part of this project. These are the data models I used:
 
 - User: This is a built-in data model that comes with Django. It is used for authentication and authorisation.
-- Post: This is my own data model, used for all the posts you see on my site.
-- Comment: This is another data model I created. I drew a lot of inspiration for this model from CodeInstitute's Django walkthrough project, which has a similar model. -->
+- Product: Custom data model for the products you can see on the site.
+- Order: Custom data model for defining orders.
+- OrderLineItem: Custom data model for defining single items in an order
+- Profile: Custom model for the user profile
 
 ### Data Model scheme
 <img src="" alt="database schema">
@@ -120,8 +118,8 @@ This scheme was made with Lucidchart.
 
 ### Navbar
 
-<!-- The navbar is sticky and thus offers a quick and easy way to return to the Homepage, wherever the user is in the page.
-For users that are logged out, it will display the option to sign up or log in, and for users who are already logged in it will display their username (so they know that they are logged in) and if they are a superuser or staff member they will see a link to the admin panel. -->
+The navbar is sticky and thus offers a quick and easy way to return to the Homepage or to navigate to other pages on the site.
+For users that are logged out, it will display the option to sign up or log in, and for users who are already logged in it will display their username (so they know that they are logged in) and if they are a superuser or staff member they will see a link to the admin panel.
 
 <details>
 <summary>Navbar when not logged in</summary>
