@@ -88,6 +88,16 @@
                             {% endif %}
                         </p>
                         <p>{{ product.price }} €</p>
+                        {% if request.user.is_superuser %}
+                            <form action="{% url 'edit_product' product.id %}" method="GET">
+                                {% csrf_token %}
+                                <button type="submit" class="edit-btn my-1 rounded">Edit Product</button>
+                            </form>
+                            <form action="{% url 'delete_product' product.id %}" method="GET">
+                                {% csrf_token %}
+                                <button type="submit" class="remove-btn mt-1 rounded">Delete Product</button>
+                            </form>
+                        {% endif %}
                     </div>
                 </div>
             </div>

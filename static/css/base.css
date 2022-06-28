@@ -78,9 +78,25 @@ footer{
 .remove-btn {
     background-color: var(--custom-red);
     color: white;
-    border: none;
     font-weight: 300;
     border: 1px solid black;
+}
+
+.remove-btn:hover{
+    background-color: white;
+    color: var(--custom-red);
+}
+
+.edit-btn {
+    background-color: var(--custom-yellow);
+    color: var(--custom-black);
+    font-weight: 300;
+    border: 1px solid black;
+}
+
+.edit-btn:hover {
+    background-color: var(--custom-black);
+    color: var(--custom-yellow);
 }
 
 .back-btn {
