@@ -67,6 +67,14 @@ form.addEventListener('submit', async (event) => {
         'save_info': saveInfo,
     };
 
+    console.log(`name from form: ${$.trim(form.full_name.value)}`)
+    console.log(`form.full_name: ${form.full_name}`)
+    console.log(`phone from form: ${$.trim(form.phone_number.value)}`)
+    console.log(`email from form: ${$.trim(form.email.value)}`)
+    console.log(`address line 1 from form: ${$.trim(form.street_address1.value)}`)
+    console.log(`address line 2 from form: ${$.trim(form.street_address2.value)}`)
+    console.log(`address line 2 from form: ${$.trim(form.street_address2.value)}`)
+
     let url = '/checkout/cache_checkout_data/'
     $.post(url, postData).done(function () {
         stripe.confirmCardPayment(clientSecret, {
