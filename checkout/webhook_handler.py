@@ -17,6 +17,7 @@ class StripeWH_Handler:
     
     def _send_confirmation_email(self, order):
         """Send confirmation email to the user"""
+        print('send confirmation email called')
         cust_email = order.email
         subject = render_to_string(
             'checkout/confirmation_emails/confirmation_email_subject.txt',
@@ -35,6 +36,7 @@ class StripeWH_Handler:
         """
         Handle generic Stripe webhook event
         """
+        print('handle event called')
         return HttpResponse(
             content=f'Unhandled Webhook received: {event["type"]}',
             status=200
@@ -44,6 +46,7 @@ class StripeWH_Handler:
         """
         Handle Stripe payment_intent.succeeded webhook event
         """ 
+        print('handle payment intent succeeded called')
         intent = event.data.object
         pid = intent.id
         cart = intent.metadata.cart
@@ -61,6 +64,7 @@ class StripeWH_Handler:
         profile = None
         username = intent.metadata.username
         if username != 'AnonymousUser':
+            print('username is anonymous')
             profile = UserProfile.objects.get(user__username=username)
             if save_info:
                 profile.default_phone_number = shipping_details.phone
@@ -104,6 +108,7 @@ class StripeWH_Handler:
                 status=200
             )
         else:
+            print('user is not anonymous')
             order=None
             try:
                 order = Order.objects.create(
