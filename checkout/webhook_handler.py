@@ -63,6 +63,7 @@ class StripeWH_Handler:
         # Update profile info if save_info was checked
         profile = None
         username = intent.metadata.username
+        print(f'username: {username}')
         if username != 'AnonymousUser':
             print('username is anonymous')
             profile = UserProfile.objects.get(user__username=username)
