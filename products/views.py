@@ -71,6 +71,9 @@ def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     referrer_page = ''
 
+    # If the user was browsing, referrer_page
+    # will allow them to return to the previous
+    # page while keeping all query strings
     if request.META['HTTP_REFERER']:
         referrer = request.META['HTTP_REFERER']
         split_url = referrer.split('/')
@@ -79,9 +82,6 @@ def product_detail(request, product_id):
         if split_url[3] == 'products' and referrer_path != request.path:
             referrer_page = referrer
 
-    print(f'referrer page: {referrer_page}')
-    print(f'referrer path: {referrer_path}')
-    print(f'current path: {request.get_full_path()}')
 
     cart = request.session.get('cart', {})
     is_in_cart = False
@@ -161,7 +161,7 @@ def delete_product(request, product_id):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners have access')
         return redirect(reverse('home'))
-        
+
     product = get_object_or_404(Product, pk=product_id)
     product.delete()
     messages.success(request, 'Product deleted!')

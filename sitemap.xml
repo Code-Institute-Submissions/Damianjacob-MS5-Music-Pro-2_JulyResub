@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/accounts/login/</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/accounts/signup/</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?category=accessories</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?category=percussion_instruments</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?category=keyboard_instruments</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?category=brass_instruments</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?category=string_instruments</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?category=woodwind_instruments</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/cart/</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/accounts/password/reset/</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?sort=price_lth</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?sort=price_htl</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?sort=avg_customer_rating</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?category=percussion_instruments&amp;</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?category=string_instruments&amp;</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?category=brass_instruments&amp;</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?category=keyboard_instruments&amp;</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?category=woodwind_instruments&amp;</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?category=accessories&amp;</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?sort=price_lth&amp;category=accessories</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?sort=price_htl&amp;category=accessories</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?sort=avg_customer_rating&amp;category=accessories</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?sort=price_lth&amp;category=percussion_instruments</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?sort=price_htl&amp;category=percussion_instruments</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?sort=avg_customer_rating&amp;category=percussion_instruments</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?sort=price_lth&amp;category=keyboard_instruments</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?sort=price_htl&amp;category=keyboard_instruments</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?sort=avg_customer_rating&amp;category=keyboard_instruments</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?sort=price_lth&amp;category=brass_instruments</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?sort=price_htl&amp;category=brass_instruments</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?sort=avg_customer_rating&amp;category=brass_instruments</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?sort=price_lth&amp;category=string_instruments</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?sort=price_htl&amp;category=string_instruments</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?sort=avg_customer_rating&amp;category=string_instruments</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?sort=price_lth&amp;category=woodwind_instruments</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?sort=price_htl&amp;category=woodwind_instruments</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?sort=avg_customer_rating&amp;category=woodwind_instruments</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?category=percussion_instruments&amp;sort=price_lth</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?category=string_instruments&amp;sort=price_lth</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?category=brass_instruments&amp;sort=price_lth</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?category=keyboard_instruments&amp;sort=price_lth</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?category=woodwind_instruments&amp;sort=price_lth</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?category=accessories&amp;sort=price_lth</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?sort=price_lth&amp;</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?sort=price_htl&amp;</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?sort=avg_customer_rating&amp;</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?category=percussion_instruments&amp;sort=price_htl</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?category=string_instruments&amp;sort=price_htl</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?category=brass_instruments&amp;sort=price_htl</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?category=keyboard_instruments&amp;sort=price_htl</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?category=woodwind_instruments&amp;sort=price_htl</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?category=accessories&amp;sort=price_htl</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?category=percussion_instruments&amp;sort=avg_customer_rating</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?category=string_instruments&amp;sort=avg_customer_rating</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?category=brass_instruments&amp;sort=avg_customer_rating</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?category=keyboard_instruments&amp;sort=avg_customer_rating</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?category=woodwind_instruments&amp;sort=avg_customer_rating</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ms5-music-pro.herokuapp.com/products/?category=accessories&amp;sort=avg_customer_rating</loc>
+  <lastmod>2022-06-28T22:50:04+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+
+
+</urlset>
