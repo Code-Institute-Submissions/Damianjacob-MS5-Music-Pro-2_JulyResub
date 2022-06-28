@@ -1,0 +1,5 @@
+User-Agent: *
+
+Disallow: /admin/
+Disallow: /profile/
+Sitemap: https://ms5-music-pro.herokuapp.com/sitemap.xml

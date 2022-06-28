@@ -44,7 +44,7 @@ h1 {
     background-repeat: no-repeat;
     background-position: right;
     background-attachment: fixed;
-    height: calc(100vh - 92px);
+    height: calc(100vh - 132px);
 }
 
 #shop-now-btn {
@@ -55,6 +55,11 @@ h1 {
 
 #current-page{
     background-color: #d3d9e3;
+}
+
+/* Footer */
+footer{
+    height: 40px;
 }
 
 /* Buttons */
