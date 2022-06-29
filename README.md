@@ -51,18 +51,18 @@ My own goals for this project are:
 
 
 
-4. As a user I want to get redirected to the sign in/sign up page if I click on any links or buttons that require me to be logged in so that I can sign in or sign up easily.
-5. As a user I want to get feedback from the site on the actions I have performed so that I can see whether my action was carried out correctly or not.
-6. As a user I want to be able to get back to the home page in one click so that I can navigate the site easily.
+19. As a user I want to get redirected to the sign in/sign up page if I click on any links or buttons that require me to be logged in so that I can sign in or sign up easily.
+20. As a user I want to get feedback from the site on the actions I have performed so that I can see whether my action was carried out correctly or not.
+21. As a user I want to be able to get back to the home page in one click so that I can navigate the site easily.
 
-7. As a user I want to sign up and log in so that I can perform actions reserved for registered users.
-8. As a registered user I want to be able to log out so that I have more security.
-9. As a registered user I want to be able to access my past orders.
+22. As a user I want to sign up and log in so that I can perform actions reserved for registered users.
+23. As a registered user I want to be able to log out so that I have more security.
+24. As a registered user I want to be able to access my past orders.
 ### Epic 4: Admin
-15. As a site admin I want to be able to add or delete products from the store.
+25. As a site admin I want to be able to add or delete products from the store.
 
 ## Design Choices
-My goal was to create a simple site with a clean and friendly look.
+My goal was to create a simple site with a clean and friendly look. I chose a soft yellow, black and red as my main colors, in order to recall the background-image of the landing page.
 
 ### Wireframes
 I used balsamiq for the wireframes. The final wireframe is a bit different from the first version, as i made some changes while creating the project, in accordance with Agile principles.
@@ -91,6 +91,7 @@ Other apps include:
 - profiles
 - checkout
 - cart
+- newsletter
 
 Other directories:
 - static: This is where the custom CSS and JavaScript files for this project are stored.
@@ -123,59 +124,79 @@ For users that are logged out, it will display the option to sign up or log in, 
 
 <details>
 <summary>Navbar when not logged in</summary>
-<img src='' alt='Navbar screenshot'>
+<img src='assets/images/features-screenshots/navbar-loggedout.png' alt='Navbar screenshot'>
 </details>
 <details>
 <summary>Navbar when logged in (user has admin or staff privilege)</summary>
-<img src='' alt='Navbar screenshot'>
+<img src='assets/images/features-screenshots/navbar.png' alt='Navbar screenshot'>
 </details>
-
-<!-- User stories covered:
-- 6. As a user I want to be able to get back to the home page in one click so that I can navigate the site easily. -->
 
 ### Home Page
 
-<!-- The home page is the central part of Breadit: this is where all the posts are displayed (the latest posts are displayed on top) and where the user can see more information about them.
-From here the user can scroll through the posts and click on the ones they like. Information about the posts is visible from the home page, like the user who created the post, publication date, number of likes and number of comments.
-The user can also decide to add their own post to the site, but they need to be logged in to do that. -->
+The landing page is focussed on the image of a burning guitar and is kept very simple. The only button on this page will bring the user to the products page, where all the products are listed.
+
 <details>
 <summary>Home page</summary>
-<img src='' alt='home page screenshot'>
+<img src='assets/images/features-screenshots/homepage.png' alt='home page screenshot'>
 </details>
 
-<!-- User stories covered:
-- 1. As a user I want to see all the breadit posts on the main page so that I can scroll through them.
-- 3. As a user I want to see likes, user and number of comments of a post without first having to click on it so that I can decide which posts are most relevant to me.
-- 8. As a registered user I want to be able to log out so that I have more security. -->
+User stories covered: "As a first time user I want to see the most important information on the main site so that I know what services it offers."
 
 ### User log in and sign up
-<!-- These are the forms used to sign the user up or log them in. If an anonymous user tries to access a forbidden view, they will be redirected to the login page. -->
+These are the forms used to sign the user up or log them in. If an anonymous user tries to access a forbidden view, they will be redirected to the login page.
 <details>
 <summary>Log in</summary>
-<img src='' alt='log in screenshot'>
+<img src='assets/images/features-screenshots/login.png' alt='log in screenshot'>
 </details>
 
 <details>
 <summary>Sign up</summary>
-<img src='' alt='sign up screenshot'>
+<img src='assets/images/features-screenshots/signup.png' alt='sign up screenshot'>
 </details>
-<!-- 
+
 User stories covered:
-- 4. As a user I want to get redirected to the sign in/sign up page if I click on any links or buttons that require me to be logged in so that I can sign in or sign up easily.
-- 7. As a user I want to sign up and log in so that I can perform actions reserved for registered users. -->
+- "As a user I want to get redirected to the sign in/sign up page if I click on any links or buttons that require me to be logged in so that I can sign in or sign up easily."
+- "As a user I want to sign up and log in so that I can perform actions reserved for registered users."
 
-<!-- 
-### Post Detail page
-This is where the users can see more details about a post. The full lenght of the post text can be seen here, and the comments and likes as well. The user can also like a post if they are signed in. -->
+
+### Products page
+This is where the user can see all the products in the store. The user can filter the products by category and sort them by price and rating. If the user has used the search bar, they can also filter the results to their search by category and sort it.
+
+If there are multiple pages, the user will be able to click on the next page and still keep the same query strings. This is thanks to a custom template tag I adapted, which allows to keep all query strings except if one is modified. The same custom template tag is used for the Category and "sort by" dropdowns, so that there can always be more than just one query string.
 <details>
-<summary>Post detail</summary>
-<img src='' alt='post detail screenshot'>
+<summary>Products</summary>
+<img src='assets/images/features-screenshots/products.png' alt='products screenshot'>
 </details>
 
-<!-- User stories covered:
-- 10. As a registered user I want to like posts so that I can express my preferences for certain posts.
-- 13. As a registered user I want to be able to edit my posts so that I can correct mistakes easily if they happen.
-- 14. As a registered user I want to be able to remove my posts so that I can delete them if I don't like them anymore. -->
+User stories covered:
+- "As a user I want to browse through different products so that I can decide which one to buy."
+- "As a user I want to be able to order the products by different criteria so that I can find the one I'm looking for."
+
+### Search Bar
+This is an important tool for customers, who can use it to search for any keyword they like. The site will then display any products who have that keyword in their name, category or description. The user will also be able to filter the search results by category and to sort them by price or rating.
+<details>
+<summary>Search Bar</summary>
+<img src='assets/images/features-screenshots/search-bar.png' alt='search bar screenshot'>
+</details>
+
+User stories covered:
+- "As a user I want to be able to search for keywords so that I can find any product related to that keyword."
+
+### Pagination
+The products page uses Django's pagination, which has been customised. Every page displays a maximum of 24 products. The pagination part displays the first, last, current, previous and subsquent pages. It has been tested for over 1000 products.
+<details>
+<summary>Pagination</summary>
+<img src='assets/images/features-screenshots/pagination.png' alt='pagination screenshot'>
+</details>
+
+### Product details
+By clicking on a product image, the users can see the product details page. Here, all the product information are displayed (name, category, full description, rating, price) and the users can choose the quantity they want to add to the cart. The quantity they can add to the cart is determined by the variable "availability", which is set to 10 by default. If the product is already in the cart, the user will see that and they have the possibility to update the quantity from the product details page.
+
+By clicking on "keep shopping", the user will be brought back to the products page, but with the same query strings they had before clicking on the product. This allows for a smoother user experience because the user does not have to set the filter or category again each time they come back from a product detail page.
+<details>
+<summary>Product details</summary>
+<img src='assets/images/features-screenshots/product-details.png' alt='Product details screenshot'>
+</details>
 
 <!-- ### Leaving Comments
 This is where registered users can leave a comment.
