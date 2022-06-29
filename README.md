@@ -199,39 +199,69 @@ By clicking on "keep shopping", the user will be brought back to the products pa
 </details>
 
 <details>
-<summary>Product details</summary>
+<summary>Product details: update quantity</summary>
 <img src='assets/images/features-screenshots/update-product.png' alt='Product details screenshot'>
 </details>
 
-<!-- ### Leaving Comments
-This is where registered users can leave a comment.
-<details>
-<summary>Comments</summary>
-<img src='https://github.com/Damianjacob/MS4_breadit/blob/main/breadit/docs/features/post-detail2.png' alt='comment screenshot'>
-</details> -->
+User stories covered:
+- "As a user I want to see more information about a product when I click on it so that I can know more."
 
-<!-- User stories covered:
-- 11. As a registered user I want to leave comments under posts so that I can discuss topics with other users. -->
+### Cart
+The cart is where the user can see all the items they have selected so far.
+They can update the quantity of each item, by simply selecting from a dropdown.
+The number in the dropdown is again based on the "availability" variable, which is set to 10 by default. This way they don't have to click on other buttons to update the quantity, which makes the user experience smoother.
+The can also remove items from the cart.
+At the bottom of the cart, there is a button for secure checkout.
+<details>
+<summary>Shopping Cart</summary>
+<img src='assets/images/features-screenshots/cart.png' alt='Cart screenshot'>
+</details>
+
+### Checkout
+Here is where the user can fill out their billing information, and save it if they have a registered account.
+The payment is made possible by stripe. A message and a confirmation will be sent to the user in case of a successful payment. The user does not need to be registered in order to pay.
+<details>
+<summary>Checkout</summary>
+<img src='assets/images/features-screenshots/checkout.png' alt='Checkout screenshot'>
+</details>
+
+User stories covered:
+- "As a user I want to be able to buy a product without registering to the site."
+- "As a customer, I want to receive confirmation that my payment has gone through, or an error message if it hasn't."
+- As a registered user, I want to save my delivery information so that the delivery form gets filled automatically.
+
+### Newsletter
+The users are able to subscribe to a newsletter. Once they insert their email, if it's valid and has not been added to the database, the user will get a confirmation message and a confirmation email. If their email is already in the database, they will receive a message that tells them so.
+<details>
+<summary>Newsletter</summary>
+<img src='assets/images/features-screenshots/newsletter.png' alt='Newsletter screenshot'>
+</details>
+
+### Profile
+Here the user can see their default billing information and a history of their past orders. They can click on the single orders to see the full order.
+<details>
+<summary>Profile</summary>
+<img src='assets/images/features-screenshots/profile.png' alt='Profile screenshot'>
+</details>
 
 ## Technologies used
 The primary technology used here was the Django framework
 ### Languages
 - HTML5 for building the web pages
 - CSS3 for styling the web pages (although I used mainly Bootstrap 5)
-- JavaScript for validating the media input field 
+- JavaScript for the stripe functionality and for DOM modification. 
 - Python 3 for the backend programming and database manipulation
+- PostgreSQL as a database.
 
 ### Other technologies
 Apart from the programming languages, I have used the following:
 
 - [Heroku](https://www.heroku.com/) for deploying and hosting my site.
 - [Git](https://git-scm.com/) and [GitHub](https://github.com/) for version control and storage of my code 
-- [Cloudinary](https://cloudinary.com/) for hosting the image files
+- [Amazon Web Services](https://aws.amazon.com/) for hosting the image files
 - [postgreSQL](https://www.postgresql.org/) as a database
 - [Balsamiq Wireframes](https://balsamiq.com/) for creating my wireframes
-- [Lucidchart](https://www.lucidchart.com/pages/de) for creating the data schema for my models
 - [Font Awesome](https://fontawesome.com/) - All icons are from Font Awesome
-- [Google Fonts](https://fonts.google.com/) - I used the Roboto and Open Sans fonts from Google Fonts
 - [VSCode](https://code.visualstudio.com/) - The code editor where I wrote all my code.
 - [Mockaroo](https://mockaroo.com/) - for creating fixtures to test my database
 

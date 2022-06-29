@@ -89,19 +89,22 @@
                             <li><a class="dropdown-item" href="{% url 'products' %}?category=woodwind_instruments">Woodwind</a></li>
                         </ul>
                     </li>
-                    <a class="nav-link {% if grand_total %}font-weight-bold{% endif %}" href="{% url 'view_cart' %}">
-                        Shopping Cart <i class="fa-solid fa-cart-shopping"></i>
-                        <p class="my-0 d-inline-block bg-custom-red rounded">
-                            {% if grand_total %}
-                                €{{ grand_total|floatformat:2 }}
-                            {% else %}
-                                € 0.00
-                            {% endif %}
-                        </p>
-                    </a>
-                    <a class="nav-link" href="{% url 'newsletter' %}">
-                        Newsletter
-                    </a>
+                    <li class="nav-item">
+                        <a class="nav-link {% if grand_total %}font-weight-bold{% endif %}" href="{% url 'view_cart' %}">
+                            Shopping Cart <i class="fa-solid fa-cart-shopping"></i>
+                            <p class="my-0 d-inline-block bg-custom-red rounded">
+                                {% if grand_total %}
+                                    €{{ grand_total|floatformat:2 }}
+                                {% else %}
+                                    € 0.00
+                                {% endif %}
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'newsletter' %}">
+                            Newsletter
+                        </a>
                     </li>
                 </ul>
             </div>
