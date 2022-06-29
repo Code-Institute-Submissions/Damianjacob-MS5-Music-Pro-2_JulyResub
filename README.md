@@ -27,9 +27,13 @@ My own goals for this project are:
 ## Site Owner Goals
 - Be able to manage the site by adding or deleting products.
 
+## Business Model
+
+The vision of this business is to be a user-centric music shop, with an easy layout and friendly interface. Our target customers are musicians, be they beginners or professionals, who trust us with their needs.
+The channels to be used will be social media, such as Facebook. We also plan to set up a YouTube channel to demonstrate the usage of our instruments, which will increase our reach and our popularity. 
+
 ## User Stories
 
-### Epic 1: 
 1. As a first time user I want to see the most important information on the main site so that I know what services it offers.
 2. As a user I want to browse through different products so that I can decide which one to buy.
 3. As a user I want to be able to order the products by different criteria so that I can find the one I'm looking for.
@@ -58,7 +62,7 @@ My own goals for this project are:
 22. As a user I want to sign up and log in so that I can perform actions reserved for registered users.
 23. As a registered user I want to be able to log out so that I have more security.
 24. As a registered user I want to be able to access my past orders.
-### Epic 4: Admin
+
 25. As a site admin I want to be able to add or delete products from the store.
 
 ## Design Choices
@@ -110,10 +114,6 @@ Data Models are a central part of this project. These are the data models I used
 - OrderLineItem: Custom data model for defining single items in an order
 - Profile: Custom model for the user profile
 
-### Data Model scheme
-<img src="" alt="database schema">
-
-This scheme was made with Lucidchart.
 
 ## Features 
 
@@ -270,7 +270,7 @@ Apart from the programming languages, I have used the following:
 ### HTML
 No errors were returned when passing through the official [W3C validator](https://validator.w3.org/), with the exception of a "No p element in scope but a p end tag seen".
 I was not able to understand where this comes from, it seemed only to appear on some pages and in generated code.
-Please see the screenshots for HTML here: [HTML validation](https://github.com/Damianjacob/MS4_breadit/tree/main/breadit/docs/validation/html-validation) .
+Please see the screenshots for HTML here: [HTML validation](https://github.com/Damianjacob/MS5-Music-Pro-2/tree/main/assets/images/validation) .
 
 ### CSS
 No errors were found when passing through the [Jigsaw validator](https://jigsaw.w3.org/css-validator/).
@@ -282,14 +282,14 @@ I used autopep8 for all my python files, and then checked them against the PEP8 
 
 ### JavaScript
 My JavaScript file passed through the JSHint validation without any errors.
-<img src="">
+<img src="assets/images/validation/js-validation.png">
 
 ### LIGHTHOUSE
-<!-- All of the pages in this site have achieved a total score of at least 89 in Google Lighthouse (for performance, accessibility, SEO and best practices.) -->
-You can see the results [here]().
+See the results for lighthouse testing:
+You can see the results [here](https://github.com/Damianjacob/MS5-Music-Pro-2/tree/main/assets/images/validation).
 
 ### Devices
-<!-- The testing was done on a Mac Mini and iPhone. I tested Google Chrome and Safari, and the site was functional and responsive for all devices (I used the list of devices available in the web inspector). -->
+The testing was done on a Mac Mini and iPhone. I tested Google Chrome, Firefox and Safari, and the site was functional and responsive for all devices (I used the list of devices available in the web inspector).
 
 ## Bugs
 
@@ -298,9 +298,6 @@ Fix: In settings.py I deleted the STATICFILES_STORAGE variable (which I had set 
 
 - My first deployment caused the Heroku app to crash. This was because in the Procfile I had used the Heroku app name instead of the Django project name.
 Fix: Changed "[heroku-appname].wsgi" to "[django-projectname].wsgi"
-
-- After adding custom CSS to my project and pushing the changes to Heroku, I'd get a "Server Error 500".
-Fix: 
 
 - When trying to log into my admin page, I got a "Forbidden" error where it demanded a CSRF token (which should already be taken care of).
 Fix: clear cookies from browser. https://stackoverflow.com/questions/29573163/django-admin-login-suddenly-demanding-csrf-token
@@ -320,7 +317,7 @@ Fix: clear cookies from browser. https://stackoverflow.com/questions/29573163/dj
 - Create account at Heroku
 - Create new app, give it a name and select your region
 - Go to Settings
-- Under Config Vars add your secret data (for example environment variables like API keys)
+- Under Config Vars add your secret data (for example environment variables like API keys), which will be in the env.py file in the local environment
 - Add Heroku Postgres Add-on
 - In the deployment tab, select the preferred deployment method (I chose Github)
 - Connect your app to your GitHub repository
@@ -343,3 +340,10 @@ YouTube tutorial on how to set up AWS S3 for file storage: https://www.youtube.c
 
 Custom template tag for keeping querystrings when going to another page or to a different category
 https://simpleisbetterthancomplex.com/snippet/2016/08/22/dealing-with-querystring-parameters.html
+
+## Acknowledgements
+
+I want to thank my mentor Narender Singh for his guidance and his precious advice. Thank you to all the tutors who had the patience to help me and to point me in the right direction when I was lost... You folks are awesome! Thank you to my fellow students and to everyone on the Slack channel, there is so much good advice on there. 
+Last but not least, thanks to Reddit and Stackoverflow.
+
+This was the most challenging project I have ever done, and I could not have made it without help from other people, both directly and indirectly.
