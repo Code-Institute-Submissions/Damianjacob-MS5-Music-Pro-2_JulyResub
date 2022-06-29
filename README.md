@@ -198,6 +198,11 @@ By clicking on "keep shopping", the user will be brought back to the products pa
 <img src='assets/images/features-screenshots/product-details.png' alt='Product details screenshot'>
 </details>
 
+<details>
+<summary>Product details</summary>
+<img src='assets/images/features-screenshots/update-product.png' alt='Product details screenshot'>
+</details>
+
 <!-- ### Leaving Comments
 This is where registered users can leave a comment.
 <details>

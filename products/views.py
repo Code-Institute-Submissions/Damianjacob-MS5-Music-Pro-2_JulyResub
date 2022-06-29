@@ -88,7 +88,7 @@ def product_detail(request, product_id):
     quantity_in_cart = 0
 
     for item_id, quantity in cart.items():
-        if item_id == product_id:
+        if int(item_id) == product_id:
             is_in_cart = True
             quantity_in_cart = quantity
 
