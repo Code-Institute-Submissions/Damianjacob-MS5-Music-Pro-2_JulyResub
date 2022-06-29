@@ -12,6 +12,7 @@ from profiles.forms import UserProfileForm
 from .models import Order, OrderLineItem
 import json
 
+
 @require_POST
 def cache_checkout_data(request):
     try:
@@ -26,7 +27,8 @@ def cache_checkout_data(request):
     except Exception as e:
         messages.error(request, 'Sorry, you paymentcannot \
             be processed right now. Please try again later.')
-        return HttpResponse(content=e, status = 400)
+        return HttpResponse(content=e, status=400)
+
 
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
@@ -63,15 +65,19 @@ def checkout(request):
                     )
                     order_line_item.save()
                 except Product.DoesNotExist:
-                    messages.error(request, (
-                        "One of the products in your cart wasn't found in our database. "
-                        "Please contact us for assistance!")
-                    )
+                    messages.error(
+                        request, ("One of the products in your cart wasn't"
+                                  "found in our database. Please contact\
+                                    us for assistance!"))
                     order.delete()
                     return redirect(reverse('view_cart'))
-            
+
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            return redirect(
+                reverse(
+                    'checkout_success',
+                    args=[
+                        order.order_number]))
         else:
             messages.error(request, 'There was an error with your form.')
 
@@ -83,9 +89,7 @@ def checkout(request):
 
         current_cart = cart_contents(request)
         total = current_cart['grand_total']
-        print(f'total: {total}')
         stripe_total = round(total * 100)
-        print(f'stripe total: {stripe_total}')
         stripe.api_key = stripe_secret_key
         intent = stripe.PaymentIntent.create(
             amount=stripe_total,
@@ -110,7 +114,6 @@ def checkout(request):
                 order_form = OrderForm()
         else:
             order_form = OrderForm()
-
 
     if not stripe_public_key:
         messages.warning(request, 'Sripe public key is missing!')
@@ -153,7 +156,7 @@ def checkout_success(request, order_number):
     messages.success(request, f'Order was successful! \
             Your order number is {order_number}.\
             A confirmation email will be sent to {order.email}.')
-    
+
     if 'cart' in request.session:
         del request.session['cart']
 

@@ -3,6 +3,7 @@ from products.models import Product
 from django.conf import settings
 from django.shortcuts import get_object_or_404
 
+
 def cart_contents(request):
 
     cart_items = []
@@ -28,7 +29,7 @@ def cart_contents(request):
     else:
         delivery = 0
         free_delivery_delta = 0
-    
+
     grand_total = delivery + total
 
     context = {

@@ -3,9 +3,10 @@ from django.shortcuts import get_object_or_404, render, redirect
 from products.models import Product
 from django.contrib import messages
 
+
 def view_cart(request):
     """Returns the cart"""
-    
+
     return render(request, 'cart.html')
 
 
@@ -19,11 +20,13 @@ def add_to_cart(request, item_id):
     message = ''
 
     if item_id in cart.keys():
-        message = ('You have updated the quantity of '+
-            f'{product.name.title()} to {quantity}')
+        message = ('You have updated the quantity of ' +
+                   f'{product.name.title()} to {quantity}')
     else:
-        message = (f'You have added {quantity} '+
-            f'{"items" if quantity > 1 else "item"} of {product.name} to your cart')
+        message = (
+            f'You have added {quantity} ' +
+            f'{"items" if quantity > 1 else "item"} of \
+                {product.name} to your cart')
 
     cart[item_id] = quantity
 
@@ -55,9 +58,11 @@ def remove_cart_item(request, item_id):
         del cart[item_id]
         request.session['cart'] = cart
 
-        messages.info(request, f'{product.name.title()} has been removed from your cart')
+        messages.info(
+            request,
+            f'{product.name.title()} has been removed from your cart')
 
         return redirect('view_cart')
-        
+
     except Exception as e:
         return HttpResponse(status=500)

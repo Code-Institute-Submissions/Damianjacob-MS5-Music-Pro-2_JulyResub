@@ -274,11 +274,11 @@ Please see the screenshots for HTML here: [HTML validation](https://github.com/D
 
 ### CSS
 No errors were found when passing through the [Jigsaw validator](https://jigsaw.w3.org/css-validator/).
-<img src="">
+<img src="assets/images/validation/css-validation.png">
 
 ### Python
-All my Python documents passed through the PEP8 validator without any errors. The result was the following for all of them.
-<img src="">
+I used autopep8 for all my python files, and then checked them against the PEP8 validator. The result was the following for all of them.
+<img src="assets/images/validation/python-validation.png">
 
 ### JavaScript
 My JavaScript file passed through the JSHint validation without any errors.

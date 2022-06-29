@@ -1,4 +1,9 @@
-from django.shortcuts import get_object_or_404, render, redirect, reverse
+from django.shortcuts import (
+    get_object_or_404,
+    render,
+    redirect,
+    reverse
+)
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -33,15 +38,17 @@ def products(request):
                 products = products.order_by(sortkey)
 
         if 'category' in request.GET:
-            products = products.filter(category__name__iexact=request.GET['category'])
-            category = get_object_or_404(Category, name=request.GET['category'])
+            products = products.filter(
+                category__name__iexact=request.GET['category'])
+            category = get_object_or_404(
+                Category, name=request.GET['category'])
 
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
                 messages.error(request, "Please enter a search keyword!")
                 return redirect(reverse('products'))
-            
+
             queries = (
                 Q(name__icontains=query) |
                 Q(description__icontains=query) |
@@ -77,11 +84,9 @@ def product_detail(request, product_id):
     if request.META['HTTP_REFERER']:
         referrer = request.META['HTTP_REFERER']
         split_url = referrer.split('/')
-        print(f'split url: {split_url}')
-        referrer_path = '/' + '/'.join(split_url[3: ])
+        referrer_path = '/' + '/'.join(split_url[3:])
         if split_url[3] == 'products' and referrer_path != request.path:
             referrer_page = referrer
-
 
     cart = request.session.get('cart', {})
     is_in_cart = False
@@ -92,7 +97,6 @@ def product_detail(request, product_id):
             is_in_cart = True
             quantity_in_cart = quantity
 
-    print(f'cart: {cart}')
     context = {
         'product': product,
         'referrer_page': referrer_page,
@@ -100,6 +104,7 @@ def product_detail(request, product_id):
         'quantity_in_cart': quantity_in_cart,
     }
     return render(request, 'products/product_detail.html', context)
+
 
 @login_required
 def add_product(request):
@@ -116,7 +121,9 @@ def add_product(request):
             messages.success(request, 'Successfully added product!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
-            messages.error(request, 'Failed to add product. Please make sure the form is valid.')
+            messages.error(
+                request,
+                'Failed to add product. Please make sure the form is valid.')
     else:
         form = ProductForm()
 
@@ -126,6 +133,7 @@ def add_product(request):
     }
 
     return render(request, template, context)
+
 
 @login_required
 def edit_product(request, product_id):
@@ -142,7 +150,10 @@ def edit_product(request, product_id):
             messages.success(request, 'Successfully updated product!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
-            messages.error(request, 'Failed to update product. Please re-check that the form is valid.')
+            messages.error(
+                request,
+                'Failed to update product. Please re-check \
+                    that the form is valid.')
     else:
         form = ProductForm(instance=product)
         messages.info(request, f'You are editing {product.name}')
@@ -154,6 +165,7 @@ def edit_product(request, product_id):
     }
 
     return render(request, template, context)
+
 
 @login_required
 def delete_product(request, product_id):

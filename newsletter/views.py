@@ -15,7 +15,8 @@ def newsletter(request):
         try:
             existing_email = NewsletterEmail.objects.get(email=email)
             if existing_email:
-                messages.info(request, 'You are already subscribed to our newsletter!')
+                messages.info(
+                    request, 'You are already subscribed to our newsletter!')
         except NewsletterEmail.DoesNotExist:
             try:
                 send_mail(
@@ -25,11 +26,12 @@ def newsletter(request):
                     [email],
                     fail_silently=False,
                 )
-                messages.info(request, f'You have successfully subscribed to our newsletter!\
-                        A confirmation email has been sent to {email}')
+                messages.info(
+                    request, f'You have successfully subscribed to our\
+                        newsletter! A confirmation email has been sent\
+                        to {email}')
                 NewsletterEmail.objects.create(email=email)
             except Exception as e:
                 messages.error(request, f'Sorry, there has been an error: {e}')
-
 
     return render(request, template_name=template, context=context)
