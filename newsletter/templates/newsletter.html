@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="wrapper text-center mt-4">
+    <h2 class="mt-2">Subscribe to our newsletter!</h2>
+    <p>You will be notified about any deals and new additions in our shop</p>
+    <form action="{% url 'newsletter' %}" method="POST">
+        {% csrf_token %}
+        <input type="email" placeholder="Enter your email" name="newsletter-email">
+        <p>
+            <button type="submit" class="btn btn-primary mt-2">Subscribe</button>
+        </p>
+    </form>
+</div>
+{% endblock %}
