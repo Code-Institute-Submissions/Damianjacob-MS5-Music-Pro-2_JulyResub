@@ -341,6 +341,8 @@ YouTube tutorial on how to set up AWS S3 for file storage: https://www.youtube.c
 Custom template tag for keeping querystrings when going to another page or to a different category
 https://simpleisbetterthancomplex.com/snippet/2016/08/22/dealing-with-querystring-parameters.html
 
+I have followed the walkthrough project extensively and some parts of my code are structured in a similar way.
+
 ## Acknowledgements
 
 I want to thank my mentor Narender Singh for his guidance and his precious advice. Thank you to all the tutors who had the patience to help me and to point me in the right direction when I was lost... You folks are awesome! Thank you to my fellow students and to everyone on the Slack channel, there is so much good advice on there. 
