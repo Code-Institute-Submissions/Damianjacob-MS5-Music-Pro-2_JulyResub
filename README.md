@@ -119,8 +119,8 @@ This scheme was made with Lucidchart.
 
 ### Navbar
 
-The navbar is sticky and thus offers a quick and easy way to return to the Homepage or to navigate to other pages on the site.
-For users that are logged out, it will display the option to sign up or log in, and for users who are already logged in it will display their username (so they know that they are logged in) and if they are a superuser or staff member they will see a link to the admin panel.
+The navbar offers a quick and easy way to return to the Homepage or to navigate to other pages on the site.
+For users that are logged out, it will display the option to sign up or log in, and for users who are already logged in it will display their username (so they know that they are logged in) and if they are a superuser they will see a link to the the product management page.
 
 <details>
 <summary>Navbar when not logged in</summary>
@@ -268,7 +268,8 @@ Apart from the programming languages, I have used the following:
 ## Testing
 
 ### HTML
-No errors were returned when passing through the official [W3C validator](https://validator.w3.org/).
+No errors were returned when passing through the official [W3C validator](https://validator.w3.org/), with the exception of a "No p element in scope but a p end tag seen".
+I was not able to understand where this comes from, it seemed only to appear on some pages and in generated code.
 Please see the screenshots for HTML here: [HTML validation](https://github.com/Damianjacob/MS4_breadit/tree/main/breadit/docs/validation/html-validation) .
 
 ### CSS
