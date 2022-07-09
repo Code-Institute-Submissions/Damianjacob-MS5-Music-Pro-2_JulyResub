@@ -101,9 +101,7 @@ def product_detail(request, product_id):
         'product': product,
         'referrer_page': referrer_page,
         'is_in_cart': is_in_cart,
-        'quantity_in_cart': quantity_in_cart,
-        'availability': availability,
-        'availability_range': availability_range, 
+        'quantity_in_cart': quantity_in_cart, 
     }
     return render(request, 'products/product_detail.html', context)
 
