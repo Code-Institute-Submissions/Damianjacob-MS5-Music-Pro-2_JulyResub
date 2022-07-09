@@ -2,6 +2,8 @@ from django.http import HttpResponse
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.conf import settings
+
+from musicpro.settings import EMAIL_HOST_USER
 from .models import Order, OrderLineItem
 from products.models import Product
 from profiles.models import UserProfile
@@ -18,6 +20,7 @@ class StripeWH_Handler:
 
     def _send_confirmation_email(self, order):
         """Send confirmation email to the user"""
+        email_host_address = EMAIL_HOST_USER
         cust_email = order.email
         print(f'cust_email: {cust_email}')
         try:
@@ -49,6 +52,7 @@ class StripeWH_Handler:
             send_mail(
                 subject,
                 body,
+                email_host_address,
                 [cust_email]
             )
         except Exception as e:
