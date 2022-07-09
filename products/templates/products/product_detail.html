@@ -26,7 +26,7 @@
                 Keep Shopping
             </a>
         </div>
-        {% if availability < 1 %}
+        {% if product.availability < 1 %}
             <div class="col-12 my-1 text-center">
                 <h3>Sorry, this product is not available at this time.</h3>
             </div>
@@ -73,10 +73,10 @@
                         This item is already in your cart
                     </p>
                 {% endif %}
-                {% if availability > 0 %}
+                {% if product.availability > 0 %}
                     <strong class="mx-1">Quantity: </strong>
                     <select name="quantity" class="quantity-input">
-                        {% for x in availability_range %}
+                        {% for x in product.availability_range %}
                             <option value="{{ forloop.counter }}" {% if forloop.counter == quantity_in_cart %}selected{% endif %}>
                                 {{ forloop.counter }}
                             </option>

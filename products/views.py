@@ -92,9 +92,6 @@ def product_detail(request, product_id):
     is_in_cart = False
     quantity_in_cart = 0
 
-    availability = product.availability
-    availability_range = range(availability)
-
     for item_id, quantity in cart.items():
         if int(item_id) == product_id:
             is_in_cart = True

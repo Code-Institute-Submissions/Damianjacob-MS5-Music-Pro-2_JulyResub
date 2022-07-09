@@ -76,6 +76,7 @@ footer{
 .unavailable-inner{
     background-color: var(--custom-red);
     color: var(--custom-black);
+    width: 100%;
 }
 
 

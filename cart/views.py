@@ -7,6 +7,7 @@ from django.contrib import messages
 def view_cart(request):
     """Returns the cart"""
 
+    
     return render(request, 'cart.html')
 
 

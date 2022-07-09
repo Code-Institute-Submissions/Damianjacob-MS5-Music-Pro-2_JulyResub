@@ -162,6 +162,7 @@ class StripeWH_Handler:
                     # Update availability for each product
                     if product.availability > item_quantity:
                         product.quantity -= item_quantity
+                        product.save()
                     else:
                         raise Exception(f'{product.name} has not enough \
                                 available items in stock.')

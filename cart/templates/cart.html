@@ -58,7 +58,7 @@
                                         <form action="{% url 'update_cart_item' item.product.id %}" method="POST" id="quantity-form">
                                             {% csrf_token %}
                                             <select name="quantity" class="quantity-input">
-                                                {% for x in availability %}
+                                                {% for x in item.product.availability_range %}
                                                     <option value="{{ forloop.counter }}" {% if forloop.counter == item.quantity %}selected{% endif %}>
                                                         {{ forloop.counter }}
                                                     </option>

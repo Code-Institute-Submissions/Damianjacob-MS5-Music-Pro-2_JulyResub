@@ -38,5 +38,8 @@ class Product(models.Model):
     def rounded_rating(self):
         return math.floor(self.rating)
 
+    def availability_range(self):
+        return range(self.availability)
+
     def __str__(self):
         return self.name
