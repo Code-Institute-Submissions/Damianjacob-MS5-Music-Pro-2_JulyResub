@@ -19,22 +19,34 @@ class StripeWH_Handler:
         """Send confirmation email to the user"""
         cust_email = order.email
         print(f'cust_email: {cust_email}')
-        subject = render_to_string(
-            'checkout/confirmation_emails/confirmation_email_subject.txt',
-            {'order': order})
-        print(f'subject: {subject}')
+        try:
+            subject = render_to_string(
+                'checkout/confirmation_emails/confirmation_email_subject.txt',
+                {'order': order})
+        except Exception as e:
+            print(f'there has been an error: {e}')
+        else:
+            print(f'No errors have occurred. subject: {subject}')
 
-        body = render_to_string(
-            'checkout/confirmation_emails/confirmation_email_body.txt',
-            {'order': order})
-        print(f'body: {body}')
+        try:
+            body = render_to_string(
+                'checkout/confirmation_emails/confirmation_email_body.txt',
+                {'order': order})
+        except Exception as e:
+            print(f'There has been an error: {e}')
+        else:
+            print(f'No error has occurred. body: {body}')
 
-
-        send_mail(
-            subject,
-            body,
-            [cust_email]
-        )
+        try:
+            send_mail(
+                subject,
+                body,
+                [cust_email]
+            )
+        except Exception as e:
+            print(f'There has been an error: {e}')
+        else:
+            print('mail sent successfully')
 
     def handle_event(self, event):
         """
