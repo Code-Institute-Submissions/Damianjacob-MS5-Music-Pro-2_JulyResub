@@ -40,7 +40,6 @@ def cart_contents(request):
         'free_delivery_delta': free_delivery_delta,
         'free_delivery_threshold': settings.FREE_DELIVERY_THRESHOLD,
         'grand_total': grand_total,
-        'availability': range(10),
     }
     print(f'cart_items: {cart_items}')
 

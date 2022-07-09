@@ -92,6 +92,9 @@ def product_detail(request, product_id):
     is_in_cart = False
     quantity_in_cart = 0
 
+    availability = product.availability
+    availability_range = range(availability)
+
     for item_id, quantity in cart.items():
         if int(item_id) == product_id:
             is_in_cart = True
@@ -102,6 +105,8 @@ def product_detail(request, product_id):
         'referrer_page': referrer_page,
         'is_in_cart': is_in_cart,
         'quantity_in_cart': quantity_in_cart,
+        'availability': availability,
+        'availability_range': availability_range, 
     }
     return render(request, 'products/product_detail.html', context)
 

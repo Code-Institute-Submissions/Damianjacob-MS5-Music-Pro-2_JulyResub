@@ -62,7 +62,29 @@ footer{
     height: 40px;
 }
 
+/* Products page */
+.unavailable-overlay{
+    z-index: 990;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.unavailable-inner{
+    background-color: var(--custom-red);
+    color: var(--custom-black);
+}
+
+
 /* Buttons */
+#edit-product-form, #delete-product-form{
+    z-index: 995;
+    position: relative;
+}
+
 .btt-button {
     height: 42px;
     width: 42px;

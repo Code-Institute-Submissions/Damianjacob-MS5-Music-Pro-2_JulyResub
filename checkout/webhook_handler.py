@@ -1,8 +1,11 @@
+import os
 from django.http import HttpResponse
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 
-from musicpro.settings import EMAIL_HOST_USER
+if "development" in os.environ:
+    from musicpro.settings import EMAIL_HOST_USER
+    
 from .models import Order, OrderLineItem
 from products.models import Product
 from profiles.models import UserProfile

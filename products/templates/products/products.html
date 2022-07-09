@@ -60,6 +60,13 @@
         {% for product in page_obj %}
             <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 my-4 bg-light">
                 <div class="card h-100 bg-white">
+                    {% if product.availability == 0 %}
+                        <div class="unavailable-overlay d-flex text-center align-items-center">
+                            <div class="unavailable-inner">
+                                <h3>Currently unavailable</h3>
+                            </div>
+                        </div>
+                    {% endif %}
                     {% if product.image %}
                         <a href="{% url 'product_detail' product.id %}">
                             <img src="{{ MEDIA_URL }}{{ product.image }}" class="card-img-top" alt="{{ product.name }}">
@@ -89,11 +96,11 @@
                         </p>
                         <p>{{ product.price }} €</p>
                         {% if request.user.is_superuser %}
-                            <form action="{% url 'edit_product' product.id %}" method="GET">
+                            <form action="{% url 'edit_product' product.id %}" method="GET" id="edit-product-form">
                                 {% csrf_token %}
-                                <button type="submit" class="edit-btn my-1 rounded">Edit Product</button>
+                                <button type="submit" class="edit-btn my-1 rounded">Edit or restock Product</button>
                             </form>
-                            <form action="{% url 'delete_product' product.id %}" method="GET">
+                            <form action="{% url 'delete_product' product.id %}" method="GET" id="delete-product-form">
                                 {% csrf_token %}
                                 <button type="submit" class="remove-btn mt-1 rounded">Delete Product</button>
                             </form>
