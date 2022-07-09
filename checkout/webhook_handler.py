@@ -1,13 +1,11 @@
 from django.http import HttpResponse
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
-from django.conf import settings
 
 from musicpro.settings import EMAIL_HOST_USER
 from .models import Order, OrderLineItem
 from products.models import Product
 from profiles.models import UserProfile
-from django.template.exceptions import TemplateDoesNotExist
 import json
 import time
 
@@ -20,45 +18,26 @@ class StripeWH_Handler:
 
     def _send_confirmation_email(self, order):
         """Send confirmation email to the user"""
-        email_host_address = EMAIL_HOST_USER
         cust_email = order.email
-        print(f'cust_email: {cust_email}')
-        try:
-            subject = render_to_string(
-                'confirmation_emails/confirmation_email_subject.txt',
-                {'order': order})
-        except TemplateDoesNotExist as e:
-            print(f'there has been an error: {e}')
-            print(f'Error message: {e.message}')
-        except Exception as e:
-            print(f'there has been an error: {e}')
-            print(f'Error type: {type(e)}')
-            print(f'Error message: {e.message}')
-        else:
-            print(f'No errors have occurred. subject: {subject}')
 
-        try:
-            body = render_to_string(
-                'confirmation_emails/confirmation_email_body.txt',
-                {'order': order})
-        except Exception as e:
-            print(f'There has been an error: {e}')
-            print(f'Error type: {type(e)}')
-            print(f'Error message: {e.message}')
-        else:
-            print(f'No error has occurred. body: {body}')
+        subject = render_to_string(
+            'confirmation_emails/confirmation_email_subject.txt',
+            {'order': order})
+
+        body = render_to_string(
+            'confirmation_emails/confirmation_email_body.txt',
+            {'order': order})
 
         try:
             send_mail(
                 subject,
                 body,
-                email_host_address,
+                EMAIL_HOST_USER,
                 [cust_email]
             )
         except Exception as e:
             print(f'There has been an error: {e}')
             print(f'Error type: {type(e)}')
-            print(f'Error message: {e.message}')
         else:
             print('mail sent successfully')
 
