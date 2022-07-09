@@ -5,6 +5,7 @@ from django.conf import settings
 from .models import Order, OrderLineItem
 from products.models import Product
 from profiles.models import UserProfile
+from django.template.exceptions import TemplateDoesNotExist
 import json
 import time
 
@@ -21,8 +22,11 @@ class StripeWH_Handler:
         print(f'cust_email: {cust_email}')
         try:
             subject = render_to_string(
-                'checkout/confirmation_emails/confirmation_email_subject.txt',
+                'confirmation_emails/confirmation_email_subject.txt',
                 {'order': order})
+        except TemplateDoesNotExist as e:
+            print(f'there has been an error: {e}')
+            print(f'Error message: {e.message}')
         except Exception as e:
             print(f'there has been an error: {e}')
             print(f'Error type: {type(e)}')
@@ -32,7 +36,7 @@ class StripeWH_Handler:
 
         try:
             body = render_to_string(
-                'checkout/confirmation_emails/confirmation_email_body.txt',
+                'confirmation_emails/confirmation_email_body.txt',
                 {'order': order})
         except Exception as e:
             print(f'There has been an error: {e}')
