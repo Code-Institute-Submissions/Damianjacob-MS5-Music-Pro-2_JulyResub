@@ -81,7 +81,7 @@ def product_detail(request, product_id):
     # If the user was browsing, referrer_page
     # will allow them to return to the previous
     # page while keeping all query strings
-    if request.META['HTTP_REFERER']:
+    if 'HTTP_REFERER' in request.META:
         referrer = request.META['HTTP_REFERER']
         split_url = referrer.split('/')
         referrer_path = '/' + '/'.join(split_url[3:])

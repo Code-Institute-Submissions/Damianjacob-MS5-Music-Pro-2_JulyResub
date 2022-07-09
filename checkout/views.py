@@ -63,6 +63,7 @@ def checkout(request):
                         product=product,
                         quantity=item_data,
                     )
+                    product.availability -= item_data
                     order_line_item.save()
                 except Product.DoesNotExist:
                     messages.error(
