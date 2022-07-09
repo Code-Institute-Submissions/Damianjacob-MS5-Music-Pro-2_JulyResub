@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 
-if "development" in os.environ:
+if "EMAIL_HOST_USER" in os.environ:
     from musicpro.settings import EMAIL_HOST_USER
 
 from .models import Order, OrderLineItem
@@ -95,7 +95,7 @@ class StripeWH_Handler:
 
         # Update profile info if save_info was checked
         try:
-            profile = self._save_user_info_return_profile(self, intent=intent)
+            profile = self._save_user_info_return_profile(intent=intent)
         except Exception as e:
             print(f'error while calling save user info function: {e}')
         else:
