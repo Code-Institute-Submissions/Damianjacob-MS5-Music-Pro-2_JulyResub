@@ -26,9 +26,11 @@
                 Keep Shopping
             </a>
         </div>
-        <div class="col-12 my-1 text-center">
-            <h3>Sorry, this product is not available at this time.</h3>
-        </div>
+        {% if availability < 1 %}
+            <div class="col-12 my-1 text-center">
+                <h3>Sorry, this product is not available at this time.</h3>
+            </div>
+        {% endif %}
         <div class="col-sm-12 col-md-4 col-lg-4 my-4 bg-light">
             <div class="card h-100 bg-white">
                 {% if product.image %}

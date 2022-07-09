@@ -5,7 +5,7 @@ from django.template.loader import render_to_string
 
 if "development" in os.environ:
     from musicpro.settings import EMAIL_HOST_USER
-    
+
 from .models import Order, OrderLineItem
 from products.models import Product
 from profiles.models import UserProfile
@@ -43,6 +43,24 @@ class StripeWH_Handler:
             print(f'Error type: {type(e)}')
         else:
             print('mail sent successfully')
+        
+    def _save_user_info_return_profile(self, intent):
+        shipping_details = intent.shipping
+        save_info = intent.metadata.save_info
+        profile = None
+        username = intent.metadata.username
+        if username != 'AnonymousUser':
+            profile = UserProfile.objects.get(user__username=username)
+            if save_info:
+                profile.default_phone_number = shipping_details.phone
+                profile.default_country = shipping_details.address.country
+                profile.default_postcode = shipping_details.address.postal_code
+                profile.default_town_or_city = shipping_details.address.city
+                profile.default_street_address1=shipping_details.address.line1
+                profile.default_street_address2=shipping_details.address.line2
+                profile.default_county = shipping_details.address.state
+                profile.save()
+        return profile
 
     def handle_event(self, event):
         """
@@ -60,7 +78,6 @@ class StripeWH_Handler:
         intent = event.data.object
         pid = intent.id
         cart = intent.metadata.cart
-        save_info = intent.metadata.save_info
 
         billing_details = intent.charges.data[0].billing_details
         shipping_details = intent.shipping
@@ -71,19 +88,7 @@ class StripeWH_Handler:
                 shipping_details.address[field] = None
 
         # Update profile info if save_info was checked
-        profile = None
-        username = intent.metadata.username
-        if username != 'AnonymousUser':
-            profile = UserProfile.objects.get(user__username=username)
-            if save_info:
-                profile.default_phone_number = shipping_details.phone
-                profile.default_country = shipping_details.address.country
-                profile.default_postcode = shipping_details.address.postal_code
-                profile.default_town_or_city = shipping_details.address.city
-                profile.default_street_address1=shipping_details.address.line1
-                profile.default_street_address2=shipping_details.address.line2
-                profile.default_county = shipping_details.address.state
-                profile.save()
+        profile = self._save_user_info_return_profile(self, intent=intent)
 
         order_exists = False
         attempt = 1
@@ -133,14 +138,21 @@ class StripeWH_Handler:
                     original_cart=cart,
                     stripe_pid=pid,
                 )
-                for item_id, item_data in json.loads(cart).items():
+                for item_id, item_quantity in json.loads(cart).items():
                     product = Product.objects.get(id=item_id)
                     order_line_item = OrderLineItem(
                         order=order,
                         product=product,
-                        quantity=item_data,
+                        quantity=item_quantity,
                     )
                     order_line_item.save()
+
+                    # Update availability for each product
+                    if product.availability > item_quantity:
+                        product.quantity -= item_quantity
+                    else:
+                        raise Exception(f'{product.name} has not enough \
+                                available items in stock.')
             except Exception as e:
                 if order:
                     order.delete()

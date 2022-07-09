@@ -1,3 +1,4 @@
+from msilib.schema import Error
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render, reverse
 from django.views.decorators.http import require_POST
@@ -55,16 +56,25 @@ def checkout(request):
             order.stripe_pid = pid
             order.original_cart = json.dumps(cart)
             order.save()
-            for item_id, item_data in cart.items():
+            for item_id, item_quantity in cart.items():
                 try:
                     product = Product.objects.get(id=item_id)
-                    order_line_item = OrderLineItem(
-                        order=order,
-                        product=product,
-                        quantity=item_data,
-                    )
-                    product.availability -= item_data
-                    order_line_item.save()
+
+                    if item_quantity > product.availability:
+                        messages.error(
+                            request,
+                            f'There is not enough availability \
+                            for {product.name}. Please check your cart'
+                        )
+                        order.delete()
+                        return redirect(reverse('view_cart'))
+                    else:
+                        order_line_item = OrderLineItem(
+                            order=order,
+                            product=product,
+                            quantity=item_quantity,
+                        )
+                        order_line_item.save()
                 except Product.DoesNotExist:
                     messages.error(
                         request, ("One of the products in your cart wasn't"
