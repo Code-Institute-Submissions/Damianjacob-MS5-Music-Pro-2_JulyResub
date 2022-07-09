@@ -1,4 +1,3 @@
-from msilib.schema import Error
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render, reverse
 from django.views.decorators.http import require_POST
