@@ -160,9 +160,14 @@ class StripeWH_Handler:
                     order_line_item.save()
 
                     # Update availability for each product
+                    print(f'{product.name}')
+                    print(f'product availability: {product.availability}')
+                    print(f'product quantity in cart: {item_quantity}')
                     if product.availability > item_quantity:
+                        print(f'{product.name} has enough availability')
                         product.quantity -= item_quantity
                         product.save()
+                        print(f'product availability after save: {product.availability}')
                     else:
                         raise Exception(f'{product.name} has not enough \
                                 available items in stock.')
