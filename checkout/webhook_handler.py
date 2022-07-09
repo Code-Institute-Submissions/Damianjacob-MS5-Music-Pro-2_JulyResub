@@ -25,6 +25,8 @@ class StripeWH_Handler:
                 {'order': order})
         except Exception as e:
             print(f'there has been an error: {e}')
+            print(f'Error type: {type(e)}')
+            print(f'Error message: {e.message}')
         else:
             print(f'No errors have occurred. subject: {subject}')
 
@@ -34,6 +36,8 @@ class StripeWH_Handler:
                 {'order': order})
         except Exception as e:
             print(f'There has been an error: {e}')
+            print(f'Error type: {type(e)}')
+            print(f'Error message: {e.message}')
         else:
             print(f'No error has occurred. body: {body}')
 
@@ -45,6 +49,8 @@ class StripeWH_Handler:
             )
         except Exception as e:
             print(f'There has been an error: {e}')
+            print(f'Error type: {type(e)}')
+            print(f'Error message: {e.message}')
         else:
             print('mail sent successfully')
 
