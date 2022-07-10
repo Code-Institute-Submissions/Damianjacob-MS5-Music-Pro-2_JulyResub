@@ -40,7 +40,6 @@
                     <img src="{{ MEDIA_URL }}noimage.jpg" class="card-img-top" alt="No image for this product">
                 {% endif %}
                 <div class="card-body">
-                    {{ product.avg_rating }}
                     {% if product.avg_rating %}
                         <i class="fas fa-star{% if product.avg_rating >= 1 %} text-orange-custom{% endif %}"></i>
                         <i class="fas fa-star{% if product.avg_rating >= 2 %} text-orange-custom{% endif %}"></i>
