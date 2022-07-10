@@ -137,14 +137,17 @@ class StripeWH_Handler:
                     print(f'{product.name}')
                     print(f'product availability: {product.availability}')
                     print(f'product quantity in cart: {item_quantity}')
-                    if product.availability > item_quantity:
-                        print(f'{product.name} has enough availability')
-                        product.quantity -= item_quantity
-                        product.save()
-                        print(f'product availability after save: {product.availability}')
-                    else:
-                        raise Exception(f'{product.name} has not enough \
-                                available items in stock.')
+                    try:
+                        if product.availability > item_quantity:
+                            print(f'{product.name} has enough availability')
+                            product.quantity -= item_quantity
+                            product.save()
+                            print(f'product availability after save: {product.availability}')
+                        else:
+                            raise Exception(f'{product.name} has not enough \
+                                    available items in stock.')
+                    except Exception as e:
+                        print(f'there has been an error: {e}')
 
             return HttpResponse(
                 content=f'Webhook received: {event["type"]} | SUCCESS:\
@@ -181,14 +184,17 @@ class StripeWH_Handler:
                     print(f'{product.name}')
                     print(f'product availability: {product.availability}')
                     print(f'product quantity in cart: {item_quantity}')
-                    if product.availability > item_quantity:
-                        print(f'{product.name} has enough availability')
-                        product.quantity -= item_quantity
-                        product.save()
-                        print(f'product availability after save: {product.availability}')
-                    else:
-                        raise Exception(f'{product.name} has not enough \
-                                available items in stock.')
+                    try:
+                        if product.availability > item_quantity:
+                            print(f'{product.name} has enough availability')
+                            product.quantity -= item_quantity
+                            product.save()
+                            print(f'product availability after save: {product.availability}')
+                        else:
+                            raise Exception(f'{product.name} has not enough \
+                                    available items in stock.')
+                    except Exception as e:
+                        print(f'there has been an error: {e}')
             except Exception as e:
                 if order:
                     order.delete()
