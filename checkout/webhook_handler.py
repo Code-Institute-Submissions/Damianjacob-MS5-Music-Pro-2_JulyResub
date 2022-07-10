@@ -140,7 +140,7 @@ class StripeWH_Handler:
                     try:
                         if product.availability > item_quantity:
                             print(f'{product.name} has enough availability')
-                            product.quantity -= item_quantity
+                            product.availability -= item_quantity
                             product.save()
                             print(f'product availability after save: {product.availability}')
                         else:
@@ -187,7 +187,7 @@ class StripeWH_Handler:
                     try:
                         if product.availability > item_quantity:
                             print(f'{product.name} has enough availability')
-                            product.quantity -= item_quantity
+                            product.availability -= item_quantity
                             product.save()
                             print(f'product availability after save: {product.availability}')
                         else:
