@@ -1,3 +1,6 @@
+from itertools import product
+from django.contrib.auth.models import User
+from django.db.models import Sum
 from django.db import models
 import math
 
@@ -29,17 +32,37 @@ class Product(models.Model):
         on_delete=models.SET_NULL)
     image = models.ImageField(null=True, blank=True)
     price = models.DecimalField(max_digits=7, decimal_places=2, default=0)
-    rating = models.DecimalField(
-        max_digits=6,
-        decimal_places=2,
-        blank=True,
-        null=True)
+
+    def avg_rating(self):
+        try:
+            ratings = Rating.objects.filter(product=self)
+            n_of_ratings = Rating.objects.filter(product=self).count()
+            sum_of_ratings = ratings.aggregate(Sum('rating'))['rating__sum']
+            print(sum_of_ratings)
+            return sum_of_ratings/n_of_ratings
+        except Rating.DoesNotExist:
+            return None
+    
+    def total_ratings(self):
+        try:
+            ratings = Rating.objects.filter(product=self)
+            return ratings.count()
+        except Rating.DoesNotExist:
+            return 0
+
 
     def rounded_rating(self):
-        return math.floor(self.rating)
+        return math.floor(self.avg_rating)
 
     def availability_range(self):
         return range(self.availability)
 
     def __str__(self):
         return self.name
+
+
+class Rating(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE,
+        related_name='rating')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    rating = models.IntegerField()

@@ -1,3 +1,4 @@
+from math import prod
 from django.shortcuts import (
     get_object_or_404,
     render,
@@ -6,9 +7,10 @@ from django.shortcuts import (
 )
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.contrib import messages
 from django.db.models import Q, F
-from .models import Product, Category
+from .models import Product, Category, Rating
 from .forms import ProductForm
 
 
@@ -78,6 +80,7 @@ def product_detail(request, product_id):
 
     product = get_object_or_404(Product, pk=product_id)
     referrer_page = ''
+    # rating = Product.objects.filter(rating__rating)
 
     # If the user was browsing, referrer_page
     # will allow them to return to the previous
@@ -179,3 +182,44 @@ def delete_product(request, product_id):
     product.delete()
     messages.success(request, 'Product deleted!')
     return redirect(reverse('products'))
+
+
+@login_required
+def add_rating(request, product_id):
+    """Add a rating to a product"""
+
+    try:
+        user_name = request.user.username
+        user = User.objects.get(username=user_name)
+        product = Product(pk=product_id)
+
+        if request.method == 'POST':
+            user_rating = request.POST['rating']
+
+            rating, created = Rating.objects.update_or_create(
+                user=user,
+                product=product,
+                defaults={'rating': user_rating}
+            )
+
+            if created:
+                messages.info(
+                    request,
+                    f'Thanks for rating this product! Your \
+                        rating is {rating.rating}'
+                )
+            else:
+                messages.info(
+                    request,
+                    f'You have updated your rating. Your new \
+                        rating is {rating.rating}'
+                )
+
+
+
+    except Exception as e:
+        print(f'there was an error: {e}')
+    else:
+        print('rating submitted successfully')
+    
+    return redirect(reverse('product_detail', args=[product_id]))
