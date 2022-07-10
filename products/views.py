@@ -15,7 +15,7 @@ from .forms import ProductForm
 def products(request):
     """Returns the products page"""
 
-    products = Product.objects.all()
+    products = Product.objects.all().order_by(F('availability').desc())
     categories = Category.objects.all()
     query = None
     category = None
@@ -36,6 +36,7 @@ def products(request):
                 products = products.order_by(F('rating').desc(nulls_last=True))
             else:
                 products = products.order_by(sortkey)
+            
 
         if 'category' in request.GET:
             products = products.filter(
