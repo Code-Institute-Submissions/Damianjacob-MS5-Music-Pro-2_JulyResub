@@ -80,6 +80,15 @@ footer{
 }
 
 
+/* Product details page */
+/* #rating-form:hover{
+    color: orange;
+}
+
+#rating-form > label:hover {
+    color: black;
+} */
+
 /* Buttons */
 #edit-product-form, #delete-product-form{
     z-index: 995;

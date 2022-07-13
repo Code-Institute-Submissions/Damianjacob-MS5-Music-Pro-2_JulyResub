@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
+{% block extra_js %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+{% endblock %}
 
 {% block content %}
 <!-- Modal for product image-->
@@ -52,8 +57,8 @@
                         No rating yet
                     {% endif %}
                     {% if user.is_authenticated %}
-                        <p>rate this product:</p>
-                        <form action="{% url 'add_rating' product.id %}" method="POST" class="ml-3">
+                        <p class="text-right mb-0 mt-1">Rate this product:</p>
+                        <form action="{% url 'add_rating' product.id %}" method="POST" class="text-right" id="rating-form">
                             {% csrf_token %}
                             <input type="radio" id="rating-1" name="rating" value="1" class="d-none">
                             <label for="rating-1"><i class="fas fa-star"></i></label>
@@ -65,7 +70,6 @@
                             <label for="rating-4"><i class="fas fa-star"></i></label>
                             <input type="radio" id="rating-5" name="rating" value="5" class="d-none">
                             <label for="rating-5"><i class="fas fa-star"></i></label>
-                            <button type="submit">Submit rating</button>
                         </form>
                     {% endif %}
                     <p>{{ product.price }} €</p>
@@ -107,4 +111,37 @@
         </form>
     </div>
 </div>
+{% endblock %}
+
+{% block postloadjs %}
+
+<script>
+    let form_labels = $('#rating-form > label');
+    form_labels.hover(function(){
+        $(this).css('color', 'orange');
+        console.log(`current element: ${$(this).attr('for')}`)
+        console.log(`current element control value: ${$(this)[0].control.value}`)
+        
+        let current_checkbox_value = $(this)[0].control.value;
+        form_labels.each(function() {
+            if ($(this)[0].control.value <= current_checkbox_value){
+                $(this).css('color', 'orange');
+
+                console.log($(this)[0].control.value)
+            } else {
+                $(this).css('color', 'black');
+            }
+        })
+
+    }, function(){
+        form_labels.each(function(){
+            $(this).css('color', 'black');
+        })
+    });
+
+    let rating_form = $('#rating-form').click(function(){
+        $(this).submit();
+    })
+
+</script>
 {% endblock %}
