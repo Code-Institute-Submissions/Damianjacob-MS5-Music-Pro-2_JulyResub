@@ -3,8 +3,10 @@ from django.contrib.auth.models import User
 from products.models import Product
 
 class UserQuestion(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE,
+        related_name='questions')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE,
+        related_name='questions')
     date = models.DateField(auto_now_add=True)
     content = models.TextField()
     has_answer = models.BooleanField(default=False)
@@ -14,8 +16,10 @@ class UserQuestion(models.Model):
 
 
 class OwnerAnswer(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    question = models.ForeignKey(UserQuestion, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE,
+        related_name='answers')
+    question = models.ForeignKey(UserQuestion, on_delete=models.CASCADE,
+        related_name='answers')
     date = models.DateField(auto_now_add=True)
     content = models.TextField()
 

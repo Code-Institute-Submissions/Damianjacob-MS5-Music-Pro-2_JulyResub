@@ -110,12 +110,34 @@
             <input type="hidden" name="redirect_url" value="{{ request.path }}">
         </form>
     </div>
+    <div class="row">
+        <h3>Ask a question about this product!</h3>
+        <form action="">
+            {% csrf_token %}
+            {{ question_form | crispy }}
+        </form>
+        {% if product.questions %}
+        <h3>Questions:</h3>
+            {% for question in product.questions.all %}
+                <div class="col-12 mb-3">
+                    <div class="card mx-auto">
+                        <div class="card-body">
+                        <h5 class="card-title">{{ question.user }} asked:</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ question.date }}</h6>
+                        <p class="card-text">{{ question.content }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
 </div>
 {% endblock %}
 
 {% block postloadjs %}
 
 <script>
+    // Hover effect for stars (rating)
     let form_labels = $('#rating-form > label');
     form_labels.hover(function(){
         $(this).css('color', 'orange');
@@ -139,9 +161,9 @@
         })
     });
 
+    // Submits the rating on click
     let rating_form = $('#rating-form').click(function(){
         $(this).submit();
     })
-
 </script>
 {% endblock %}

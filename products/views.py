@@ -12,6 +12,7 @@ from django.contrib import messages
 from django.db.models import Q, F
 from .models import Product, Category, Rating
 from .forms import ProductForm
+from questions.forms import UserQuestionForm
 
 
 def products(request):
@@ -80,7 +81,11 @@ def product_detail(request, product_id):
 
     product = get_object_or_404(Product, pk=product_id)
     referrer_page = ''
-    # rating = Product.objects.filter(rating__rating)
+
+    question_form = UserQuestionForm()
+
+    # for question in product.questions:
+    #     print(type(question))
 
     # If the user was browsing, referrer_page
     # will allow them to return to the previous
@@ -105,7 +110,8 @@ def product_detail(request, product_id):
         'product': product,
         'referrer_page': referrer_page,
         'is_in_cart': is_in_cart,
-        'quantity_in_cart': quantity_in_cart, 
+        'quantity_in_cart': quantity_in_cart,
+        'question_form': question_form
     }
     return render(request, 'products/product_detail.html', context)
 

@@ -1,3 +1,4 @@
+from pyexpat import model
 from django import forms
 from .models import UserProfile
 
@@ -32,3 +33,4 @@ class UserProfileForm(forms.ModelForm):
                 self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].widget.attrs['class'] = 'border-black rounded'
             self.fields[field].label = False
+
