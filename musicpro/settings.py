@@ -62,7 +62,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     'profiles',
-    'newsletter'
+    'newsletter',
+    'questions'
 ]
 
 MIDDLEWARE = [
