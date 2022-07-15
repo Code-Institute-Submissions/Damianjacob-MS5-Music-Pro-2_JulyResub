@@ -10,4 +10,6 @@ class UserQuestionForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['content'].widget.attrs['placeholder'] = 'Your question'
+        self.fields['content'].widget.attrs['class'] = 'question-form'
+        self.fields['content'].label = ''
         

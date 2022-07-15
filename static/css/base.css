@@ -37,6 +37,10 @@ h1 {
     color: var(--custom-black);
 }
 
+.border-custom-red{
+    border-color: var(--custom-red);
+}
+
 /* Landing page */
 #hero-image-container {
     background: url('/media/guitaronfire-medium.jpg');
@@ -81,13 +85,10 @@ footer{
 
 
 /* Product details page */
-/* #rating-form:hover{
-    color: orange;
-}
 
-#rating-form > label:hover {
-    color: black;
-} */
+.question-form{
+    height: 120px !important;
+}
 
 /* Buttons */
 #edit-product-form, #delete-product-form{

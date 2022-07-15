@@ -111,16 +111,20 @@
         </form>
     </div>
     <div class="row">
-        <h3>Ask a question about this product!</h3>
-        <form action="">
-            {% csrf_token %}
-            {{ question_form | crispy }}
-        </form>
+        <div class="col-12 mb-3">
+            <hr>
+            <h3>Ask a question about this product!</h3>
+            <form action="{% url 'add_question' product.id %}" method="POST" class="text-center">
+                {% csrf_token %}
+                {{ question_form | crispy }}
+                <button class="btn btn-primary">Submit question</button>
+            </form>
+            <hr>
+        </div>
         {% if product.questions %}
-        <h3>Questions:</h3>
             {% for question in product.questions.all %}
                 <div class="col-12 mb-3">
-                    <div class="card mx-auto">
+                    <div class="card mx-auto shadow border-custom-red">
                         <div class="card-body">
                         <h5 class="card-title">{{ question.user }} asked:</h5>
                         <h6 class="card-subtitle mb-2 text-muted">{{ question.date }}</h6>
