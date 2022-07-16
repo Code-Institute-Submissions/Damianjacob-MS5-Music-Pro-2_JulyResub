@@ -41,6 +41,10 @@ h1 {
     border-color: var(--custom-red);
 }
 
+.border-custom-black{
+    border-color: var(--custom-black);
+}
+
 /* Landing page */
 #hero-image-container {
     background: url('/media/guitaronfire-medium.jpg');
@@ -88,6 +92,17 @@ footer{
 
 .question-form{
     height: 120px !important;
+}
+.answer-form{
+    height: 120px !important;
+}
+
+.question-wrapper{
+    border-top: 1px solid var(--custom-red);
+}
+
+.answer-wrapper{
+    border-bottom: 1px solid var(--custom-black);
 }
 
 /* Buttons */

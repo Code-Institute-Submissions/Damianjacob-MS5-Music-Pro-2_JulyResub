@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import UserQuestion, OwnerAnswer
+from .models import UserQuestion, OwnerReply
 
 @admin.register(UserQuestion)
 class UserQuestionAdmin(admin.ModelAdmin):
@@ -12,7 +12,7 @@ class UserQuestionAdmin(admin.ModelAdmin):
     )
 
 
-@admin.register(OwnerAnswer)
-class OwnerAnswerAdmin(admin.ModelAdmin):
+@admin.register(OwnerReply)
+class OwnerReplyAdmin(admin.ModelAdmin):
     pass
 

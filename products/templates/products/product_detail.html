@@ -123,7 +123,7 @@
         </div>
         {% if product.questions %}
             {% for question in product.questions.all %}
-                <div class="col-12 mb-3">
+                <div class="col-12 my-3 question-wrapper">
                     <div class="card mx-auto shadow border-custom-red">
                         <div class="card-body">
                         <h5 class="card-title">{{ question.user }} asked:</h5>
@@ -132,6 +132,27 @@
                         </div>
                     </div>
                 </div>
+                {% if question.has_answer %}
+                    {% for reply in question.answers.all %}
+                        <div class="col-12 ml-4 mb-3 answer-wrapper">
+                            <div class="card mx-auto shadow border-custom-black">
+                                <div class="card-body">
+                                <h5 class="card-title">{{ reply.user }} replied:</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">{{ reply.date }}</h6>
+                                <p class="card-text">{{ reply.content }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% elif not question.has_answer and request.user.is_superuser %}
+                    <!-- {% if request.user.is_superuser %} -->
+                    <form action="{% url 'add_reply' question.id %}" class="ml-4 text-center" method="POST" class="text-center">
+                        {% csrf_token %}
+                        {{ answer_form | crispy }}
+                        <button class="btn btn-primary">Submit reply</button>
+                    </form>
+                    <!-- {% endif %} -->
+                {% endif %}
             {% endfor %}
         {% endif %}
     </div>
