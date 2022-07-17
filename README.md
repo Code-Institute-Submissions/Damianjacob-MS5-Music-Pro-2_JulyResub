@@ -1,6 +1,6 @@
 # MS5-Music-Pro-2
 
-See deployed site here: 
+See deployed site here: <a href="https://ms5-music-pro.herokuapp.com/">MusicPro</a>
 
 ## Table of Contents
 
@@ -26,6 +26,7 @@ My own goals for this project are:
 
 ## Site Owner Goals
 - Be able to manage the site by adding or deleting products.
+- Manage user questions
 
 ## Business Model
 
@@ -96,6 +97,7 @@ Other apps include:
 - checkout
 - cart
 - newsletter
+- questions
 
 Other directories:
 - static: This is where the custom CSS and JavaScript files for this project are stored.
@@ -166,9 +168,16 @@ User stories covered:
 This is where the user can see all the products in the store. The user can filter the products by category and sort them by price and rating. If the user has used the search bar, they can also filter the results to their search by category and sort it.
 
 If there are multiple pages, the user will be able to click on the next page and still keep the same query strings. This is thanks to a custom template tag I adapted, which allows to keep all query strings except if one is modified. The same custom template tag is used for the Category and "sort by" dropdowns, so that there can always be more than just one query string.
+
+If any product is unavailable, it will be greyed out with a red disclaimer and the users will not be able to interact with it. The owner can still edit/restock or delete that product. See [product_details](#product-details) for more information about the availability functionality.
 <details>
 <summary>Products</summary>
 <img src='assets/images/features-screenshots/products.png' alt='products screenshot'>
+</details>
+
+<details>
+<summary>Unavailable product</summary>
+<img src='assets/images/features-screenshots/unavailable-product.png' alt='unavailable product screenshot'>
 </details>
 
 User stories covered:
@@ -193,7 +202,9 @@ The products page uses Django's pagination, which has been customised. Every pag
 </details>
 
 ### Product details
-By clicking on a product image, the users can see the product details page. Here, all the product information are displayed (name, category, full description, rating, price) and the users can choose the quantity they want to add to the cart. The quantity they can add to the cart is determined by the variable "availability", which is set to 10 by default. If the product is already in the cart, the user will see that and they have the possibility to update the quantity from the product details page.
+By clicking on a product image, the users can see the product details page. Here, all the product information are displayed (name, category, full description, rating, price) and the users can choose the quantity they want to add to the cart. The quantity they can add to the cart is determined by the attribute "availability", which will diminish each time a user buys a product. Once the availability reaches 0, the product is shown as unavailable and the owner will have to restock it. If the product is already in the cart, the user will see that and they have the possibility to update the quantity from the product details page.
+
+Registered users have the possibility to rate the products by clicking on the stars under the product image.
 
 By clicking on "keep shopping", the user will be brought back to the products page, but with the same query strings they had before clicking on the product. This allows for a smoother user experience because the user does not have to set the filter or category again each time they come back from a product detail page.
 <details>
@@ -331,15 +342,37 @@ Fix: clear cookies from browser. https://stackoverflow.com/questions/29573163/dj
 - In VSCode, click on "Clone Git repository"
 - Paste the address of your repository and press enter. 
 
+### Creating a virtual environment, the requirements.txt file and env.py file
+Before starting to code on your machine, it's important to create a virtual environment. 
+This avoids cluttering the requirements.txt file with all the Python modules you have installed on your machine, and it avoids installing any Python moduels you won't need in your project.
+
+#### Virtual environment
+- In your IDE (for example VSCode), open a terminal
+- Use the following command to install venv: "python3 -m venv /path/to/new/virtual/environment". This has to be the root folder of your Django project.
+- A new folder called "venv" will be created.
+- Activate the virtual environment by typing the command "source venv/bin/activate"
+
+#### Requirements.txt
+- In the root folder of your Django project, create the file "requirements.txt"
+- Make sure to store all the requirements in the requirements.txt file before you push to your deployed website. The command to do so is "pip3 freeze --local > requirements.txt". This will collect all the Python modules you have installed in your virtual environment and write them down in the requirements.txt file.
+
+#### Environment variables and the env.py file
+Environment variables are things like secre API keys, which must not be publicly accessible for security reasons. On your local environment, you should store them in a file called "env.py", which will only be accessible from your own machine.
+
+- In the root folder of your Django project, create a file called "env.py"
+- There should be a file called ".gitignore" in your root directory. If it doesn't exist, create it.
+- Add "env.py" without any quotation marks to the .gitignore file. Any files in .gitignore will not be pushed to Github.
+
+
 ### Deploying to Heroku
 - Create account at Heroku
 - Create new app, give it a name and select your region
 - Go to Settings
-- Under Config Vars add your secret data (for example environment variables like API keys), which will be in the env.py file in the local environment
+- Under Config Vars add your secret data (for example environment variables like API keys), which will be in the env.py file in the local environment. You need to copy all the environments variables from your local environment to the config vars.
 - Add Heroku Postgres Add-on
-- In the deployment tab, select the preferred deployment method (I chose Github)
-- Connect your app to your GitHub repository
-- Enable automatic deploys
+- In the deployment tab, select the preferred deployment method (for this project, I used Heroku Git because of Heroku-GitHub issues)
+- Follow the instructions on Heroku after you chose your deployment method. This may include downloading the Heroku CLI, logging in to the Heroku CLI and cloning the repository.
+- If you chose "Heroku Git" as your deployment method, you will have to push all your commits twice: once to GitHub by using the command "git push" and once to Heroku with the command "git push heroku main".
 - For any issues it's useful to consult the build log in the activity tab
 - Before going public, it's very important to set DEBUG to false in the django settings.py file.
 
