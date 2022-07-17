@@ -6,9 +6,7 @@ See deployed site here: <a href="https://ms5-music-pro.herokuapp.com/">MusicPro<
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
-
 ## A Music Shop site for purchasing instruments
-
 
 ## Project Goals
 The goals for this project are:
@@ -315,10 +313,95 @@ My JavaScript file passed through the JSHint validation without any errors.
 See the results for lighthouse testing:
 You can see the results [here](https://github.com/Damianjacob/MS5-Music-Pro-2/tree/main/assets/images/validation).
 
-### Functionality testing
+### Functionality Testing
 
-### Devices
-The testing was done on a Mac Mini and iPhone. I tested Google Chrome, Firefox and Safari, and the site was functional and responsive for all devices (I used the list of devices available in the web inspector).
+#### Products and product details page 
+
+##### Pagination, sorting and categories
+
+In order to test that the products page works correctly, I created fixtures for the product model. Using the site [Mockaroo](https://mockaroo.com/), I created 1000 fake products which I then loaded into my database. The main goal was to use a large number of products to see whether the pagination, category and sorting functionalities worked well together. I have used a custom template tag (see products/templatetags/templatehelpers.py) because at the beginning there were some issues, especially regarding the pagination: When going to a different page, any sorting or category would be reset, making it impossible to use those features. Thanks to the "relative_url" template tag, this issue was resolved.
+
+__Successful testing scenarios__:
+
+- Select a category and go to next page. The "category" is maintained on the next page as well.
+- Select a category and a "Sort by" option. Both are maintained when going to the next page.
+- Select a "Sort by" option, then a category. Both are maintained, even when going to the next page.
+- Enter a search term, then select a category. The results for the search term are now filtered by that category.
+- Select a category and a sorting option, then click on one product. When clicking on the "Keep Shopping" button, the category and sorting option are still there.
+- When no result is found for either a search query or a category, or a search query filtered by a certain category, a specific message is displayed.
+
+- The pagination is based on the Django example but has been customised. I have tested various edge cases to make sure that the pagination display makes sense, for example when there are only two pages or only one page.
+
+##### Privilege-based features
+
+__Successful testing scenarios__:
+
+- When logged in as the owner, the "edit or restock" and "delete" buttons are visible on each product
+- The "edit or restock" and "delete" buttons can be interacted with even when a product is unavailable, and thus cannot be accessed.
+- When logged in as a normal user, the "edit and restock" and "delete" buttons are invisible
+- When not logged in, the "edit and restock" and "delete" buttons are invisible
+- On the product details page, only registered users can leave a rating, otherwise the rating form is invisible
+- Only registered users can submit a question. If a user is not logged it, they are redirected to the login page.
+- Only the site owner can leave replies to questions. A normal user will not see the "Owner reply" form.
+- Both anonymous users and registered users can add items to the cart, get notified when items are added, and can easily modify the quantity from the product details page.
+
+#### Cart page
+
+__Successful testing scenarios__:
+
+- Both registered and anonymous users can update the quantity of each item simply by selecting a new number from the dropdown.
+- Registered and anonymous users can delete products from the cart.
+
+
+#### Checkout page
+
+__Successful testing scenarios__:
+- The shipping form throws an error if one of the required fields is not filled or if it is filled incorrectly (only after trying to submit)
+- The payment form will show a red error message if the card number is incomplete or incorrect, even without submitting
+- After a successful payment, a confirmation email is sent to the email address from the form and a success message is displayed on the site.
+
+#### Profile page
+
+##### For registered users
+__Successful testing scenarios__:
+- For registerd normal users, their Default delivery information is displayed
+- Their order history is displayed
+- By clicking on one order of the order history, they can see all the details of that order
+- They can update their default delivery information by clicking on the update information button.
+
+##### For site owners
+__Successful testing scenarios__:
+- Site owners have access to the "Product Management" and the "User Questions" menu options.
+- In "Product Management", they can create a new product by entering all the information necessary. Uploading images works without any issues.
+- In "User Questions" site owners can see two tables: one with unanswered user questions, the other one with answered user questions.
+- When the site owner submits a reply in the "User questions view", they get redirected to the same page and the question will disappear in the "unanswered" table and appear in the "answered" table.
+- By clicking on a product name, they get to the product details page of that product.
+
+#### Newsletter page
+__Successful testing scenarios__:
+- If an user is already subscribed, they will be informed of that and they won't receive any confirmation email.
+- If an user is not yet subscribed, they will receive a confirmation message on the site and a confirmation email.
+
+### Devices and Responsiveness Testing
+I tested the responsiveness of my site by testing different dimensions in the web inspectors of various browsers and testing them directly on my mobile device.
+Testing for responsiveness was performed successfully with the following devices:
+
+#### Device: Mac Mini
+##### Browser: Google Chrome
+- Dimensions: iPhone SE. All pages are responsive, user questions tables are responsive.
+- Dimensions: iPhone XR. All pages are responsive, user questions tables are responsive.
+- Dimensions: iPhone 12 Pro. All pages are responsive, user questions tables are responsive.
+- Dimensions: Pixel 5. All pages are responsive, user questions tables are responsive.
+- Dimensions: Samsung Galaxy S8+. All pages are responsive, user questions tables are responsive.
+- Dimensions: Samsung Galaxy S20 Ultra. All pages are responsive, user questions tables are responsive.
+- Dimensions: iPad Air. All pages are responsive, user questions tables are responsive.
+- Dimensions: Full Screen. All pages are responsive.
+
+##### Browser: Firefox
+- Dimensions: I tried different dimensions, and paid attention that the breakpoints worked as intended. They did, and the tables were responsive on smaller screen sizes.
+
+##### Browser: Safari
+- Dimensions: Same as with Firefox: I tried different dimensions, and paid attention that the breakpoints worked as intended. They did, and the tables were responsive on smaller screen sizes. As opposed to Firefox and Chrome, Safari has a dedicated "Responsive Design" mode, which we have to access for testing different dimensions.
 
 ## Bugs
 
