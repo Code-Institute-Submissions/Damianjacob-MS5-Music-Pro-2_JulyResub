@@ -38,7 +38,7 @@ class Product(models.Model):
             n_of_ratings = Rating.objects.filter(product=self).count()
             sum_of_ratings = ratings.aggregate(Sum('rating'))['rating__sum']
             if sum_of_ratings:
-                return sum_of_ratings/n_of_ratings
+                return round(sum_of_ratings/n_of_ratings, 2)
         except Rating.DoesNotExist:
             return None
 
