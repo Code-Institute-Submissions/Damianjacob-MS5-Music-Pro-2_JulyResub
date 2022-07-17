@@ -133,20 +133,17 @@ My goal was to create a simple site with a clean and friendly look. I chose a so
 I used balsamiq for the wireframes. The final wireframe is a bit different from the first version, as i made some changes while creating the project, in accordance with Agile principles.
 <details>
 <summary>Wireframes for mobile</summary>
-<img src='assets/images/wireframes/wf-mobile-mp2' alt='mobile wireframe.png'>
-![mobile wireframe](assets/images/wireframes/wf-mobile-mp2.png)
+<img src='assets/images/wireframes/wf-mobile-mp2.png' alt='mobile wireframe'>
 </details>
 
 <details>
 <summary>Wireframes for tablet</summary>
 <img src='assets/images/wireframes/wf-tablet-mp2.png' alt='tablet wireframe'>
-![tablet wireframe](assets/images/wireframes/wf-tablet-mp2.png)
 </details>
 
 <details>
 <summary>Wireframes for desktop</summary>
 <img src='assets/images/wireframes/wf-desktop-mp2.png' alt='desktop wireframe'>
-![desktop wireframe](assets/images/wireframes/wf-desktop-mp2.png)
 </details>
 
 ## Structure
