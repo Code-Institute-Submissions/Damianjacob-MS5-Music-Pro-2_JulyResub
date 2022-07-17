@@ -9,7 +9,7 @@ from .forms import OwnerReplyForm
 
 
 def questions(request):
-    
+
     answer_form = OwnerReplyForm()
     unanswered_questions = UserQuestion.objects.filter(has_answer=False)
     answered_questions = UserQuestion.objects.filter(has_answer=True)
@@ -23,6 +23,7 @@ def questions(request):
 
     return render(request, 'questions/questions.html', context)
 
+
 @login_required
 def add_question(request, product_id):
 
@@ -34,15 +35,20 @@ def add_question(request, product_id):
 
         try:
             question = UserQuestion(
-                user = user,
-                product = product,
-                content = content
+                user=user,
+                product=product,
+                content=content
             )
             question.save()
-            messages.info(request, 'Your question has been added successfully!')
+            messages.info(
+                request, 'Your question has been added successfully!')
         except Exception as e:
             print(f'There was an error: {e}')
-    return redirect(reverse('product_detail', kwargs={'product_id': product_id}))
+    return redirect(
+        reverse(
+            'product_detail',
+            kwargs={
+                'product_id': product_id}))
 
 
 @login_required
@@ -58,9 +64,9 @@ def add_reply(request, question_id):
 
         try:
             reply = OwnerReply(
-                user = user,
-                question = question,
-                content = content
+                user=user,
+                question=question,
+                content=content
             )
             reply.save()
             messages.info(request, 'Your reply has been added successfully!')

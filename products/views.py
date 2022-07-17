@@ -218,9 +218,6 @@ def add_rating(request, product_id):
                     f'You have updated your rating. Your new \
                         rating is {rating.rating}'
                 )
-
-
-
     except Exception as e:
         print(f'there was an error: {e}')
     else:

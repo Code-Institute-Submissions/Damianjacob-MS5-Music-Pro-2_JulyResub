@@ -32,6 +32,7 @@ def newsletter(request):
                         to {email}')
                 NewsletterEmail.objects.create(email=email)
             except Exception as e:
-                messages.error(request, f'Sorry, there has been an error: {e}')
+                messages.error(request, f'Sorry, there has been an error:\
+                        {e}')
 
     return render(request, template_name=template, context=context)

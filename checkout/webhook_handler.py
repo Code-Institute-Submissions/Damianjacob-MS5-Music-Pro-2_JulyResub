@@ -127,7 +127,6 @@ class StripeWH_Handler:
                 time.sleep(1)
 
         if order_exists:
-            print('order exists')
             self._send_confirmation_email(order)
 
             for item_id, item_quantity in json.loads(cart).items():

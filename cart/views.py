@@ -7,7 +7,6 @@ from django.contrib import messages
 def view_cart(request):
     """Returns the cart"""
 
-    
     return render(request, 'cart.html')
 
 
@@ -33,7 +32,6 @@ def add_to_cart(request, item_id):
 
     request.session['cart'] = cart
     messages.info(request, message)
-    print(f'cart: {request.session["cart"]}')
     return redirect(redirect_url)
 
 

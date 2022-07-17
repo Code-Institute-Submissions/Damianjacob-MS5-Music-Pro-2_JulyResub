@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import UserQuestion, OwnerReply
 
+
 @admin.register(UserQuestion)
 class UserQuestionAdmin(admin.ModelAdmin):
     ordering = ('date', )
@@ -14,7 +15,7 @@ class UserQuestionAdmin(admin.ModelAdmin):
 
 @admin.register(OwnerReply)
 class OwnerReplyAdmin(admin.ModelAdmin):
-        list_display = (
+    list_display = (
         'date',
         'user',
         'question',
