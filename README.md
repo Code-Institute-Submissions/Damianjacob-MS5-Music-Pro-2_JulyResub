@@ -134,16 +134,19 @@ I used balsamiq for the wireframes. The final wireframe is a bit different from 
 <details>
 <summary>Wireframes for mobile</summary>
 <img src='assets/images/wireframes/wf-mobile-mp2' alt='mobile wireframe'>
+![mobile wireframe](assets/images/wireframes/wf-mobile-mp2)
 </details>
 
 <details>
 <summary>Wireframes for tablet</summary>
 <img src='assets/images/wireframes/wf-tablet-mp2' alt='tablet wireframe'>
+![tablet wireframe](assets/images/wireframes/wf-tablet-mp2)
 </details>
 
 <details>
 <summary>Wireframes for desktop</summary>
 <img src='assets/images/wireframes/wf-desktop-mp2' alt='desktop wireframe'>
+![desktop wireframe](assets/images/wireframes/wf-desktop-mp2)
 </details>
 
 ## Structure
