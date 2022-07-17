@@ -14,5 +14,9 @@ class UserQuestionAdmin(admin.ModelAdmin):
 
 @admin.register(OwnerReply)
 class OwnerReplyAdmin(admin.ModelAdmin):
-    pass
-
+        list_display = (
+        'date',
+        'user',
+        'question',
+        'content',
+    )

@@ -61,6 +61,7 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 {% if request.user.is_superuser %}
                                     <li><a class="dropdown-item" href="{% url 'add_product' %}">Product Management</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'questions' %}">User Questions</a></li>
                                 {% endif %}
                                 <li><a class="dropdown-item" href="{% url 'profile' %}">My Profile</a></li>
                                 <li><a class="dropdown-item" href="{% url 'account_logout' %}">Log Out</a></li>

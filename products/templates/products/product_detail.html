@@ -145,13 +145,11 @@
                         </div>
                     {% endfor %}
                 {% elif not question.has_answer and request.user.is_superuser %}
-                    <!-- {% if request.user.is_superuser %} -->
                     <form action="{% url 'add_reply' question.id %}" class="ml-4 text-center" method="POST" class="text-center">
                         {% csrf_token %}
                         {{ answer_form | crispy }}
                         <button class="btn btn-primary">Submit reply</button>
                     </form>
-                    <!-- {% endif %} -->
                 {% endif %}
             {% endfor %}
         {% endif %}

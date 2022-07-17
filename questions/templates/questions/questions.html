@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            {% if unanswered_questions %}
+                <h3>Unanswered User Questions:</h3>
+                <table class="table table-responsive table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Product</th>
+                            <th scope="col">User</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Question</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for question in unanswered_questions %}
+                            <tr>
+                                <td>
+                                    <a href="{% url 'product_detail' question.product.id %}">
+                                    {{ question.product.name }}
+                                    </a>
+                                </td>
+                                <td>{{ question.user.username }}</td>
+                                <td>{{ question.date }}</td>
+                                <td>{{ question.content }}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+                                    <form action="{% url 'add_reply' question.id %}" class="text-center" method="POST" class="text-center">
+                                        {% csrf_token %}
+                                        {{ answer_form | crispy }}
+                                        <button class="btn btn-primary">Submit reply</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <h3 class="mb-4 text-center">There are no unanswered user questions <i class="fa-solid fa-check"></i></h3>
+            {% endif %}
+        </div>
+        <div class="col-12">
+            {% if answered_questions %}
+            <h3>Answered User Questions:</h3>
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th scope="col">Product</th>
+                        <th scope="col">User</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Question</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for question in answered_questions %}
+                        <tr>
+                            <td>
+                                <a href="{% url 'product_detail' question.product.id %}">
+                                {{ question.product.name }}
+                                </a>
+                            </td>
+                            <td>{{ question.user.username }}</td>
+                            <td>{{ question.date }}</td>
+                            <td>{{ question.content }}</td>
+                        </tr>
+                        {% for answer in question.answers.all %}
+                            <tr class="table-info">
+                                <th scope="row">Reply</td>
+                                <td>
+                                    {{ answer.user }}
+                                </td>
+                                <td>
+                                    {{ answer.date }}
+                                </td>
+                                <td colspan="2">
+                                    {{ answer.content }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
