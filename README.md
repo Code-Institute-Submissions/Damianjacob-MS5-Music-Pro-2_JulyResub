@@ -7,7 +7,7 @@ See deployed site here:
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 
-## A forum for bakers and bread enthusiasts
+## A Music Shop site for purchasing instruments
 
 
 ## Project Goals
@@ -113,6 +113,9 @@ Data Models are a central part of this project. These are the data models I used
 - Order: Custom data model for defining orders.
 - OrderLineItem: Custom data model for defining single items in an order
 - Profile: Custom model for the user profile
+- Rating: Custom model used for rating products
+- UserQuestion: Custom model used to represent the questions users can ask for each product
+- OwnerReply: Custom model which represents the owner's reply to user questions
 
 
 ## Features 
@@ -244,6 +247,19 @@ Here the user can see their default billing information and a history of their p
 <img src='assets/images/features-screenshots/profile.png' alt='Profile screenshot'>
 </details>
 
+### User Questions
+With this feature, all logged-in users are able to ask questions about the site's products. Only the site owner can reply to the questions. The user questions and owner replies are styled differently, so as to make them easily distinguishable.
+The site owner has access to a questions view, where all the user questions are listed, both those which have been answered and those which have not been answered yet. This allows the owner to see all unanswered questions at one glance, and they can reply to each question without leaving the questions view.
+<details>
+<summary>User questions and owner replies</summary>
+<img src='assets/images/features-screenshots/product-questions.png' alt='Product questions'>
+</details>
+<details>
+<summary>Questions view for owner</summary>
+<img src='assets/images/features-screenshots/questions-view.png' alt='Questions view'>
+</details>
+
+
 ## Technologies used
 The primary technology used here was the Django framework
 ### Languages
@@ -287,6 +303,8 @@ My JavaScript file passed through the JSHint validation without any errors.
 ### LIGHTHOUSE
 See the results for lighthouse testing:
 You can see the results [here](https://github.com/Damianjacob/MS5-Music-Pro-2/tree/main/assets/images/validation).
+
+### Functionality testing
 
 ### Devices
 The testing was done on a Mac Mini and iPhone. I tested Google Chrome, Firefox and Safari, and the site was functional and responsive for all devices (I used the list of devices available in the web inspector).
